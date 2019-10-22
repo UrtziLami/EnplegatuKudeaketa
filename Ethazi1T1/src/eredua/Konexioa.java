@@ -12,7 +12,7 @@ public class Konexioa {
 	private static Konexioa konexio = null;
 	private Connection kon;
 
-	// KONSTRUCTOREA
+	// KONSTRUKTOREA
 	// datu basearen izena jasotzen du
 	private Konexioa(String datuBasea) {
 
