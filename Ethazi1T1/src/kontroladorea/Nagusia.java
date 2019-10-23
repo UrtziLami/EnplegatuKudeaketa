@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import kontroladorea.Logger.nireLogerra;
 
 public class Nagusia {
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);// logerraSortu
+	public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);// logerraSortu
 
 	public static void main(String[] args) {
 
