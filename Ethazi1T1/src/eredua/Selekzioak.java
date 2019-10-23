@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 public class Selekzioak {
 	
-	public static ArrayList<String> ateraDepart(Departamentu dept) {
+	public static ArrayList<Departamentu> ateraDepart(Departamentu dept) {
 		Statement st = null;
 		Connection konexioa = Konexioa.getKonexioa("EnpKude");
 
-		ArrayList<String> zerbitzuArray = new ArrayList<String>();
+		ArrayList<Departamentu> zerbitzuArray = new ArrayList<Departamentu>();
 
 		String izena;
 
@@ -30,7 +30,7 @@ public class Selekzioak {
 
 			while (rs.next()) {
 				izena = (rs.getString("izena"));
-				zerbitzuArray.add(izena);
+				//zerbitzuArray.add(izena);
 			}
 
 		} catch (Exception e) {
