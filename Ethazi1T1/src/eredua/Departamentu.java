@@ -1,10 +1,10 @@
 package eredua;
 
-public class Departamentuak {
+public class Departamentu {
 	private int departKod;
 	private String eraikuntza, DepartIzena;
 
-	public Departamentuak(int departKod, String eraikuntza, String departIzena) {
+	public Departamentu(int departKod, String eraikuntza, String departIzena) {
 		this.departKod = departKod;
 		this.eraikuntza = eraikuntza;
 		DepartIzena = departIzena;

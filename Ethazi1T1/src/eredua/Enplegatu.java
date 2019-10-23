@@ -2,19 +2,39 @@ package eredua;
 
 import java.sql.Date;
 
-public class Enplegatuak {
-	private int enpKod, departKod, soldata;
+public class Enplegatu {
+	private int enpKod, departKod, soldata, zuzendariKod;
 	private Date AltaData;
-	private String IzenAbizena, ardura;
+	private String IzenAbizena, ardura, maila;
 
-	public Enplegatuak(int enpKod, int departKod, int soldata, Date altaData, String izenAbizena, String ardura) {
-		super();
+	
+
+	public Enplegatu(int enpKod, int departKod, int soldata, int zuzendariKod, Date altaData, String izenAbizena,
+			String ardura, String maila) {
 		this.enpKod = enpKod;
 		this.departKod = departKod;
 		this.soldata = soldata;
+		this.zuzendariKod = zuzendariKod;
 		AltaData = altaData;
 		IzenAbizena = izenAbizena;
 		this.ardura = ardura;
+		this.maila = maila;
+	}
+
+	public int getZuzendariKod() {
+		return zuzendariKod;
+	}
+
+	public void setZuzendariKod(int zuzendariKod) {
+		this.zuzendariKod = zuzendariKod;
+	}
+
+	public String getMaila() {
+		return maila;
+	}
+
+	public void setMaila(String maila) {
+		this.maila = maila;
 	}
 
 	public int getEnpKod() {

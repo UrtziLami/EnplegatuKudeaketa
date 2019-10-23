@@ -10,7 +10,7 @@ public class Konexioa {
 	private String clave = "";
 	private int puerto = 3306;
 	private static Konexioa konexio = null;
-	private Connection kon;
+	private static Connection kon;
 
 	// KONSTRUKTOREA
 	// datu basearen izena jasotzen du
@@ -18,7 +18,7 @@ public class Konexioa {
 
 		// driverra erregistratu
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.err.println("ERROR AL REGISTRAR EL DRIVER");// mensage error
 			System.exit(0); // parar la ejecución
@@ -34,15 +34,15 @@ public class Konexioa {
 	}
 
 	// singelton konexioa
-	public static Konexioa getKonexioa(String datuBasea) {
-		if (konexio == null) {
+	public static Connection getKonexioa(String datuBasea) {
+		if (kon == null) {
 			konexio = new Konexioa(datuBasea);
 		} else {
 			System.out.println(
 					"No se puede crear el objeto " + datuBasea + " porque ya existe un objeto de la clase SoyUnico");
 		}
 
-		return konexio;
+		return kon;
 
 	}
 
