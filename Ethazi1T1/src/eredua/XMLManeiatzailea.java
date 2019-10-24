@@ -1,5 +1,8 @@
 package eredua;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
@@ -9,10 +12,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class XMLManeiatzailea extends DefaultHandler {
 	private String balioa = null;
 	private Enplegatu enplegatu;
-	private ArrayList<Enplegatu> EnplegatuLista;
+	private Departamentu departamentu;
+	
+	private ArrayList<Object> ObjetuLista;
 
-	public XMLManeiatzailea(ArrayList<Enplegatu> oharrak) {
-		this.EnplegatuLista = oharrak;
+	public XMLManeiatzailea(ArrayList<Object> objetuak) {
+		this.ObjetuLista = objetuak;
 	}
 
 	// Alde baterako aldagaiaren balioa garbitu.
@@ -24,6 +29,8 @@ public class XMLManeiatzailea extends DefaultHandler {
 		// Elentua <liburua> bada isbn atributua irakurriko dugu
 		if (localName.equals("enplegatu")) {
 			enplegatu = new Enplegatu();
+		}else if (localName.equals("departamentu")) {
+			departamentu = new Departamentu();
 		}
 	}
 
@@ -38,26 +45,43 @@ public class XMLManeiatzailea extends DefaultHandler {
 		// Elementuaren arabera gordeko dugu irakurritako balioa dagokion liburu
 		// objektuaren propietatean
 		switch (localName) {
-		case "data":
-			enplegatu.setData(balioa);
+		case "zuzendariKod":
+			enplegatu.setZuzendariKod(Integer.parseInt(balioa));
 			break;
-		case "ordua":
-			enplegatu.setOrduak(balioa);
+		case "soldata":
+			enplegatu.setSoldata(Integer.parseInt(balioa));
 			break;
-		case "nori":
-			enplegatu.setNori(balioa);
+		case "AltaData":
+			try {
+				enplegatu.setAltaData((Date) new SimpleDateFormat("yyyy/MM/dd").parse(balioa));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			break;
-		case "nork":
-			enplegatu.setNork(balioa);
+		case "IzenAbizena":
+			enplegatu.setIzenAbizena(balioa);
 			break;
-		case "titulua":
-			enplegatu.setTitulua(balioa);
+		case "ardura":
+			enplegatu.setArdura(balioa);
 			break;
-		case "edukia":
-			enplegatu.setEdukia(balioa);
+		case "maila":
+			enplegatu.setMaila(balioa);
 			break;
-		case "oharra":
-			EnplegatuLista.add(enplegatu);
+		case "DepartIzena":
+			departamentu.setDepartIzena(balioa);
+			break;
+		case "eraikuntza":
+			departamentu.setEraikuntza(balioa);
+			break;
+		case "departKod":
+			enplegatu.setDepartKod(Integer.parseInt(balioa));
+			departamentu.setDepartKod(Integer.parseInt(balioa));
+			break;	
+		case "enplegatu":
+			ObjetuLista.add(enplegatu);
+			break;
+		case "departamentu":
+			ObjetuLista.add(departamentu);
 			break;
 		}
 
