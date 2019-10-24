@@ -62,10 +62,12 @@ public class E_Erregistratu extends JPanel {
 				    }
 				}
 			
-			}
+			
 		});
 		btnFitxategitikErregistratu.setBounds(88, 195, 308, 55);
 		add(btnFitxategitikErregistratu);
 
 	}
 }
+
+
