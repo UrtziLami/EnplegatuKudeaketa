@@ -7,7 +7,8 @@ public class Enplegatu {
 	private Date AltaData;
 	private String IzenAbizena, ardura, maila;
 
-	
+	public Enplegatu() {
+	}
 
 	public Enplegatu(int enpKod, int departKod, int soldata, int zuzendariKod, Date altaData, String izenAbizena,
 			String ardura, String maila) {

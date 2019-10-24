@@ -3,6 +3,9 @@ package eredua;
 public class Departamentu {
 	private int departKod;
 	private String eraikuntza, DepartIzena;
+	
+	public Departamentu() {
+	}
 
 	public Departamentu(int departKod, String eraikuntza, String departIzena) {
 		this.departKod = departKod;
