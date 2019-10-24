@@ -7,10 +7,15 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -21,20 +26,47 @@ import com.opencsv.CSVReader;
 import kontroladorea.Nagusia;
 
 public class FitxategiakIrakurri {
+
+	private static void stringakArrayListeanSartu(JSONObject objetua, ArrayList<Object> objetuak) {
+		JSONObject EnplegatuObjetua = (JSONObject) objetua.get("enplegatu");
+		JSONObject DepartamentuObjetua = (JSONObject) objetua.get("departamentu");
+		if (EnplegatuObjetua != null) {
+			int enpKod = (int) EnplegatuObjetua.get("enpKod");
+			int soldata = (int) EnplegatuObjetua.get("soldata");
+			int zuzendariKod = (int) EnplegatuObjetua.get("zuzendariKod");
+			int departKod = (int) EnplegatuObjetua.get("departKod");
+
+			Date AltaData = (Date) EnplegatuObjetua.get("AltaData");
+			String IzenAbizena = (String) EnplegatuObjetua.get("IzenAbizena");
+			String ardura = (String) EnplegatuObjetua.get("ardura");
+			String maila = (String) EnplegatuObjetua.get("maila");
+			Enplegatu enplegatuBerria = new Enplegatu(enpKod, departKod, soldata, zuzendariKod, AltaData, IzenAbizena,
+					ardura, maila);
+			objetuak.add(enplegatuBerria);
+		}
+		if (DepartamentuObjetua != null) {
+			String eraikuntza = (String) EnplegatuObjetua.get("eraikuntza");
+			String DepartIzena = (String) EnplegatuObjetua.get("DepartIzena");
+			int departKod = (int) EnplegatuObjetua.get("departKod");
+			Departamentu departamentuBerria = new Departamentu(departKod, eraikuntza, DepartIzena);
+			objetuak.add(departamentuBerria);
+		}
+
+	}
+
 	@SuppressWarnings("unchecked")
-	public static ArrayList<String> irakurriFitzategiaJSON(String ruta) {
-		ArrayList<String> Oharrak = new ArrayList<String>();
+	public static ArrayList<Object> irakurriFitzategiaJSON(String ruta) {
+		ArrayList<Object> objetuak = new ArrayList<Object>();
 		// JSON parser object to parse read file
 		JSONParser jsonParser = new JSONParser();
 
 		try (FileReader reader = new FileReader(ruta)) {
 			// JSON Irakurri
 			Object obj = jsonParser.parse(reader);
-
 			JSONArray employeeList = (JSONArray) obj;
 
 			// Stringak arrayListean Sartu
-			employeeList.forEach(ohar -> stringakArrayListeanSartu((JSONObject) ohar, Oharrak));
+			employeeList.forEach(obje -> stringakArrayListeanSartu((JSONObject) obje, objetuak));
 
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -43,17 +75,16 @@ public class FitxategiakIrakurri {
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
-		return Oharrak;
+		return objetuak;
 	}
 
-	public static ArrayList<String> irakurriFitzategiaXML(String ruta) {
-		ArrayList<String> Oharrak = new ArrayList<String>();
+	public static ArrayList<Object> irakurriFitzategiaXML(String ruta) {
+		ArrayList<Object> objetuenLista = new ArrayList<Object>();
 		try {
-			ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
 			// Sortu Faktoria
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			// Lotu maneiatzailearekin
-			reader.setContentHandler(new XMLManeiatzailea(enplegatuenLista));
+			reader.setContentHandler(new XMLManeiatzailea(objetuenLista));
 			// Prozesatu liburuen fitxategia
 			reader.parse(new InputSource(new FileInputStream(ruta)));
 			// Badaukagu kargatuta liburuak eta orain inprimatuko ditugu
@@ -63,9 +94,8 @@ public class FitxategiakIrakurri {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		System.out.println();
-		return Oharrak;
+		return objetuenLista;
 	}
 
 	public static ArrayList<String> irakurriFitzategiaCSV(String ruta) {
