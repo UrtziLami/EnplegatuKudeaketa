@@ -28,7 +28,6 @@ public class E_Erregistratu extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//Creamos el objeto JFileChooser
 				JFileChooser fc=new JFileChooser();
-				 
 				//Indicamos lo que podemos seleccionar
 				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				 
