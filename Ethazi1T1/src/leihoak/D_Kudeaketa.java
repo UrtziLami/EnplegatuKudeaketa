@@ -12,12 +12,12 @@ public class D_Kudeaketa extends JPanel {
 	public D_Kudeaketa() {
 		setLayout(null);
 		
-		JButton btnNewButton = new JButton("Departamentua Erregistratu");
-		btnNewButton.setBounds(98, 93, 294, 41);
+		JButton btnNewButton = new JButton("Departamentuak Erregistratu");
+		btnNewButton.setBounds(79, 82, 343, 64);
 		add(btnNewButton);
 		
 		JButton btnDepartamentuakBilatu = new JButton("Departamentuak Bilatu");
-		btnDepartamentuakBilatu.setBounds(98, 201, 294, 41);
+		btnDepartamentuakBilatu.setBounds(79, 209, 343, 64);
 		add(btnDepartamentuakBilatu);
 
 	}

@@ -2,6 +2,7 @@ package leihoak;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class Txostenak extends JPanel {
 
@@ -18,6 +19,12 @@ public class Txostenak extends JPanel {
 		JButton btnDepartamentuakInprimatu = new JButton("Departamentuak Inprimatu");
 		btnDepartamentuakInprimatu.setBounds(103, 225, 297, 47);
 		add(btnDepartamentuakInprimatu);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem(".txt");
+		comboBox.addItem(".pdf");
+		comboBox.setBounds(216, 344, 79, 20);
+		add(comboBox);
 
 	}
 }

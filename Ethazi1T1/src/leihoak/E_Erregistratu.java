@@ -19,8 +19,8 @@ public class E_Erregistratu extends JPanel {
 	public E_Erregistratu() {
 		setLayout(null);
 		
-		JButton btnEnplegatuErregistratu = new JButton("Enplegatu erregistratu");
-		btnEnplegatuErregistratu.setBounds(88, 78, 308, 55);
+		JButton btnEnplegatuErregistratu = new JButton("Enplegatua erregistratu");
+		btnEnplegatuErregistratu.setBounds(79, 82, 343, 64);
 		add(btnEnplegatuErregistratu);
 		
 		JButton btnFitxategitikErregistratu = new JButton("Fitxategitik erregistratu");
@@ -30,13 +30,10 @@ public class E_Erregistratu extends JPanel {
 				JFileChooser fc=new JFileChooser();
 				//Indicamos lo que podemos seleccionar
 				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-				 
 				//Creamos el filtro
 				FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT", "txt");
-				 
 				//Le indicamos el filtro
 				fc.setFileFilter(filtro);
-				 
 				//Abrimos la ventana, guardamos la opcion seleccionada por el usuario
 				//int seleccion=fc.showOpenDialog(contentPane);
 				 
@@ -64,7 +61,7 @@ public class E_Erregistratu extends JPanel {
 			
 			
 		});
-		btnFitxategitikErregistratu.setBounds(88, 195, 308, 55);
+		btnFitxategitikErregistratu.setBounds(79, 209, 343, 64);
 		add(btnFitxategitikErregistratu);
 
 	}
