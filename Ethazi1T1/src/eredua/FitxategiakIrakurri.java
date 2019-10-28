@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
@@ -22,7 +23,10 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 
+import CSVObjetuak.CSVenplegatua;
 import kontroladorea.Nagusia;
 
 public class FitxategiakIrakurri {
@@ -98,33 +102,22 @@ public class FitxategiakIrakurri {
 		return objetuenLista;
 	}
 
-	public static ArrayList<String> irakurriFitzategiaCSV(String ruta) {
-		ArrayList<String> Oharrak = new ArrayList<String>();
-		try (Reader reader = Files.newBufferedReader(Paths.get(ruta)); CSVReader csvReader = new CSVReader(reader);) {
+	public static ArrayList<Object> irakurriFitzategiaCSV(String ruta) {
+		ArrayList<Object> objetuenLista = new ArrayList<Object>();
+		try (Reader reader = Files.newBufferedReader(Paths.get(ruta));) {
+			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class)
+					.withIgnoreLeadingWhiteSpace(true).build();
 
-			String[] nextRecord;
-			int i = 1;
-			while ((nextRecord = csvReader.readNext()) != null) {
-				if (i > 1) {
-					Oharrak.add("data : " + nextRecord[0]);
-					Oharrak.add("ordua : " + nextRecord[1]);
-					Oharrak.add("nori : " + nextRecord[2]);
-					Oharrak.add("nork : " + nextRecord[3]);
-					Oharrak.add("titulua : " + nextRecord[4]);
-					Oharrak.add("edukia : " + nextRecord[5]);
-					Oharrak.add("==========================");
-				}
-				i++;
+			Iterator<CSVenplegatua> csvUserIterator = csvToBean.iterator();
+			Enplegatu enplegatuBerria = new Enplegatu();
+			while (csvUserIterator.hasNext()) {
+				CSVenplegatua csvEnplegatua = csvUserIterator.next();
+				enplegatuBerria.setIzenAbizena(csvEnplegatua.getIzenAbizena());
+
 			}
-		} catch (FileNotFoundException fnfe) {
-			JOptionPane.showMessageDialog(null, "File no found");
-			Nagusia.LOGGER.severe(fnfe.getMessage());
-
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "File no found");
-
+			e.printStackTrace();
 		}
-
-		return Oharrak;
+		return objetuenLista;
 	}
 }
