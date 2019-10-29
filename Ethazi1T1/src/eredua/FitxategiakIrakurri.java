@@ -26,6 +26,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import CSVObjetuak.CSVdepartamentu;
 import CSVObjetuak.CSVenplegatua;
 import kontroladorea.Nagusia;
 
@@ -105,15 +106,25 @@ public class FitxategiakIrakurri {
 	public static ArrayList<Object> irakurriFitzategiaCSV(String ruta) {
 		ArrayList<Object> objetuenLista = new ArrayList<Object>();
 		try (Reader reader = Files.newBufferedReader(Paths.get(ruta));) {
-			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class)
-					.withIgnoreLeadingWhiteSpace(true).build();
+			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class).withIgnoreLeadingWhiteSpace(true).build();;
+			CsvToBean<CSVdepartamentu> csvToBean2 = new CsvToBeanBuilder(reader).withType(CSVdepartamentu.class).withIgnoreLeadingWhiteSpace(true).build();
 
 			Iterator<CSVenplegatua> csvUserIterator = csvToBean.iterator();
 			Enplegatu enplegatuBerria = new Enplegatu();
+			Departamentu departamentuBerria = new Departamentu();
 			while (csvUserIterator.hasNext()) {
 				CSVenplegatua csvEnplegatua = csvUserIterator.next();
 				enplegatuBerria.setIzenAbizena(csvEnplegatua.getIzenAbizena());
-
+				enplegatuBerria.setSoldata(csvEnplegatua.getSoldata());
+				enplegatuBerria.setAltaData(csvEnplegatua.getAltaData());
+				enplegatuBerria.setMaila(csvEnplegatua.getMaila());
+				enplegatuBerria.setDepartKod(csvEnplegatua.getDepartKod());
+			}
+			Iterator<CSVdepartamentu> csvUserIterator1 = csvToBean2.iterator();
+			while (csvUserIterator1.hasNext()) {
+				CSVdepartamentu csvDepartamentu = csvUserIterator1.next();
+				departamentuBerria.setEraikuntza(csvDepartamentu.getEraikuntza());
+				departamentuBerria.setDepartIzena(csvDepartamentu.getDepartIzena());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
