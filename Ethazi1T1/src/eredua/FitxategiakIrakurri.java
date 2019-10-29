@@ -106,8 +106,11 @@ public class FitxategiakIrakurri {
 	public static ArrayList<Object> irakurriFitzategiaCSV(String ruta) {
 		ArrayList<Object> objetuenLista = new ArrayList<Object>();
 		try (Reader reader = Files.newBufferedReader(Paths.get(ruta));) {
-			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class).withIgnoreLeadingWhiteSpace(true).build();;
-			CsvToBean<CSVdepartamentu> csvToBean2 = new CsvToBeanBuilder(reader).withType(CSVdepartamentu.class).withIgnoreLeadingWhiteSpace(true).build();
+			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class)
+					.withIgnoreLeadingWhiteSpace(true).build();
+			;
+			CsvToBean<CSVdepartamentu> csvToBean2 = new CsvToBeanBuilder(reader).withType(CSVdepartamentu.class)
+					.withIgnoreLeadingWhiteSpace(true).build();
 
 			Iterator<CSVenplegatua> csvUserIterator = csvToBean.iterator();
 			Enplegatu enplegatuBerria = new Enplegatu();
@@ -125,6 +128,7 @@ public class FitxategiakIrakurri {
 				CSVdepartamentu csvDepartamentu = csvUserIterator1.next();
 				departamentuBerria.setEraikuntza(csvDepartamentu.getEraikuntza());
 				departamentuBerria.setDepartIzena(csvDepartamentu.getDepartIzena());
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
