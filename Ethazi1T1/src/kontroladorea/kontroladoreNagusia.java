@@ -10,12 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import leihoak.Leihoak;
+import leihoak.*;
 
 public class kontroladoreNagusia implements ActionListener, MouseListener {
 
 	private Leihoak view;
-
 	private Leihoak leihoak;
 
 	// CONSTRUCTOR

@@ -1,6 +1,9 @@
 package leihoak;
 
 import javax.swing.JPanel;
+
+import kontroladorea.Kontroladorea;
+
 import java.awt.Button;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -18,14 +21,15 @@ public class D_Kudeaketa extends JPanel {
 	FileInputStream sarrera;
 	String dok = "";
 
-	/**
-	 * Create the panel.
-	 */
+	JButton btnDepErregisFitx = new JButton("Departamentuak Erregistratu(Fitxateigitk)");
+	JButton btnDepKudeatu = new JButton("Departamentuak Kudeatu");
+	JButton btnAtzera = new JButton("Atzera");
+	
 	public D_Kudeaketa() {
 		setLayout(null);
+		setBounds(150, 150, 520, 489);
 		
-		JButton btnNewButton = new JButton("Departamentuak Erregistratu(Fitxateigitk)");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnDepErregisFitx.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (aukera.showDialog(null, "Ireki") == JFileChooser.APPROVE_OPTION) {
 					fitx = aukera.getSelectedFile();
@@ -54,12 +58,26 @@ public class D_Kudeaketa extends JPanel {
 				}
 			}
 		});
-		btnNewButton.setBounds(79, 82, 343, 64);
-		add(btnNewButton);
+		btnDepErregisFitx.setBounds(79, 82, 343, 64);
+		add(btnDepErregisFitx);
 		
-		JButton btnDepartamentuakBilatu = new JButton("Departamentuak Kudeatu");
-		btnDepartamentuakBilatu.setBounds(79, 209, 343, 64);
-		add(btnDepartamentuakBilatu);
+		btnDepKudeatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				D_Bilatu dep = new D_Bilatu();
+				Leihoak.aldatuLeihoa(dep);
+			}
+		});
+		btnDepKudeatu.setBounds(79, 209, 343, 64);
+		add(btnDepKudeatu);
+	
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontroladorea kont = new Kontroladorea();
+				kont.aldatuLeihoMenua();
+			}
+		});
+		btnAtzera.setBounds(214, 403, 89, 23);
+		add(btnAtzera);
 
 	}
 }

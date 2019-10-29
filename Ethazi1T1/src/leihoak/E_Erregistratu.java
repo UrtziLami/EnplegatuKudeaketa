@@ -2,6 +2,9 @@ package leihoak;
 
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import kontroladorea.Kontroladorea;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -20,31 +23,38 @@ public class E_Erregistratu extends JPanel {
 	File fitx;
 	FileInputStream sarrera;
 	String dok = "";
+	
+	JButton btnEnpErregisFitx = new JButton("Enplegatua erregistratu(Fitxateigitik)");
+	JButton btnEnpKudeaketa = new JButton("Enplegatuak kudeatu");
+	JButton btnAtzera = new JButton("Atzera");
 
 	public E_Erregistratu() {
 		setLayout(null);
+		setBounds(150, 150, 520, 490);
 
-		JButton btnEnplegatuErregistratu = new JButton("Enplegatua erregistratu(Fitxateigitik)");
-		btnEnplegatuErregistratu.addActionListener(new ActionListener() {
+		btnEnpErregisFitx.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (aukera.showDialog(null, "Ireki") == JFileChooser.APPROVE_OPTION) {
 					fitx = aukera.getSelectedFile();
 					if (fitx.canRead()) {
 						if (fitx.getName().endsWith("csv")) {
 							try {// meter el metodo para leer de un fichero csv y meterlo en dok
-
+								
+								JOptionPane.showMessageDialog(null, "Ondo erregistratu dira");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
 						} else if (fitx.getName().endsWith("xml")) {
 							try {// meter el metodo para leer de un fichero xml y meterlo en dok
-
+								
+								JOptionPane.showMessageDialog(null, "Ondo erregistratu dira");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
 						} else if (fitx.getName().endsWith("json")) {
 							try {// meter el metodo para leer de un fichero json y meterlo en dok
-
+								
+								JOptionPane.showMessageDialog(null, "Ondo erregistratu dira");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
@@ -54,18 +64,26 @@ public class E_Erregistratu extends JPanel {
 				}
 			}
 		});
-		btnEnplegatuErregistratu.setBounds(79, 82, 343, 64);
-		add(btnEnplegatuErregistratu);
-
-		JButton btnFitxategitikErregistratu = new JButton("Enplegatuak kudeatu");
-		btnFitxategitikErregistratu.addActionListener(new ActionListener() {
+		btnEnpErregisFitx.setBounds(79, 82, 343, 64);
+		add(btnEnpErregisFitx);
+		
+		btnEnpKudeaketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-
+				E_Kudeaketa emp = new E_Kudeaketa();
+				Leihoak.aldatuLeihoa(emp);
 			}
 		});
-		btnFitxategitikErregistratu.setBounds(79, 209, 343, 64);
-		add(btnFitxategitikErregistratu);
+		btnEnpKudeaketa.setBounds(79, 209, 343, 64);
+		add(btnEnpKudeaketa);
+		
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontroladorea kont = new Kontroladorea();
+				kont.aldatuLeihoMenua();
+			}
+		});
+		btnAtzera.setBounds(214, 403, 89, 23);
+		add(btnAtzera);
 
 	}
 }

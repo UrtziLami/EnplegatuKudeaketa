@@ -2,37 +2,48 @@ package leihoak;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+
+import kontroladorea.Kontroladorea;
+
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class E_Eremuak extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
-
-	/**
-	 * Create the panel.
-	 */
+	
+	JButton btnAtzera = new JButton("Atzera");
+	
+	JLabel lblIzenAbizenak = new JLabel("Izen Abizenak:");
+	JLabel lblDepartamentua = new JLabel("Departamentua:");
+	JLabel lblSoldata = new JLabel("Soldata:");
+	JLabel lblArdura = new JLabel("Ardura:");
+	JLabel lblMaila = new JLabel("Maila:");
+	
+	JComboBox cmbxDepartamentuak = new JComboBox();
+	JComboBox cmbxArdurak = new JComboBox();
+	JComboBox cmbxMailak = new JComboBox();
+	
 	public E_Eremuak() {
 		setLayout(null);
+		setBounds(150, 150, 520, 489);
 		
-		JLabel lblIzenAbizenak = new JLabel("Izen Abizenak:");
-		lblIzenAbizenak.setBounds(67, 51, 88, 14);
+		lblIzenAbizenak.setBounds(67, 51, 109, 14);
 		add(lblIzenAbizenak);
 		
-		JLabel lblDepartamentua = new JLabel("Departamentua:");
-		lblDepartamentua.setBounds(67, 114, 88, 14);
+		lblDepartamentua.setBounds(67, 114, 109, 14);
 		add(lblDepartamentua);
 		
-		JLabel lblSoldata = new JLabel("Soldata:");
 		lblSoldata.setBounds(67, 172, 46, 14);
 		add(lblSoldata);
 		
-		JLabel lblNewLabel = new JLabel("Ardura:");
-		lblNewLabel.setBounds(67, 231, 46, 14);
-		add(lblNewLabel);
+		lblArdura.setBounds(67, 231, 46, 14);
+		add(lblArdura);
 		
-		JLabel lblMaila = new JLabel("Maila:");
 		lblMaila.setBounds(67, 296, 46, 14);
 		add(lblMaila);
 		
@@ -41,22 +52,28 @@ public class E_Eremuak extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(177, 111, 109, 20);
-		add(comboBox);
+		cmbxDepartamentuak.setBounds(177, 111, 109, 20);
+		add(cmbxDepartamentuak);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(177, 169, 218, 20);
 		add(textField_1);
 		textField_1.setColumns(10);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(177, 228, 109, 20);
-		add(comboBox_1);
+		cmbxArdurak.setBounds(177, 228, 109, 20);
+		add(cmbxArdurak);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(177, 293, 109, 20);
-		add(comboBox_2);
+		cmbxMailak.setBounds(177, 293, 109, 20);
+		add(cmbxMailak);
+		
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontroladorea kont = new Kontroladorea();
+				kont.aldatuLeihoEnpKudeaketa();
+			}
+		});
+		btnAtzera.setBounds(214, 403, 89, 23);
+		add(btnAtzera);
 
 	}
 }

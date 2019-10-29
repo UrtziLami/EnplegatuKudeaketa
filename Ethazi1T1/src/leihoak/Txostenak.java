@@ -2,6 +2,8 @@ package leihoak;
 
 import javax.swing.JPanel;
 
+import kontroladorea.Kontroladorea;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -20,14 +22,17 @@ public class Txostenak extends JPanel {
 	FileOutputStream irteera;
 	String dok = "", msg = null;
 	
-	/**
-	 * Create the panel.
-	 */
+	JButton btnEnpInprimatu = new JButton("Enplegatuak Inprimatu");
+	JButton btnDepInprimatu = new JButton("Departamentuak Inprimatu");
+	JButton btnAtzera = new JButton("Atzera");
+	
+	JComboBox cmbxAtzizkia = new JComboBox();
+	
 	public Txostenak() {
 		setLayout(null);
+		setBounds(150, 150, 520, 490);
 		
-		JButton btnEnplegatuakInprimatu = new JButton("Enplegatuak Inprimatu");
-		btnEnplegatuakInprimatu.addActionListener(new ActionListener() {
+		btnEnpInprimatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (aukera.showDialog(null, "Gorde") == JFileChooser.APPROVE_OPTION) {
 					fitx = aukera.getSelectedFile();
@@ -59,22 +64,57 @@ public class Txostenak extends JPanel {
 				}
 			}
 		});
-		btnEnplegatuakInprimatu.setBounds(103, 107, 297, 47);
-		add(btnEnplegatuakInprimatu);
+		btnEnpInprimatu.setBounds(103, 107, 297, 47);
+		add(btnEnpInprimatu);
 		
-		JButton btnDepartamentuakInprimatu = new JButton("Departamentuak Inprimatu");
-		btnDepartamentuakInprimatu.addActionListener(new ActionListener() {
+		btnDepInprimatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (aukera.showDialog(null, "Gorde") == JFileChooser.APPROVE_OPTION) {
+					fitx = aukera.getSelectedFile();
+					if (fitx.getName().endsWith("txt")) {
+						try {// meter el metodo para escribir de un fichero txt y meterlo en dok
+							
+							msg = "Fitxategia gorde da.";
+						} catch (Exception ex) {
+							System.out.println(ex.getMessage());
+						}
+						if (msg != null) {
+							JOptionPane.showMessageDialog(null, msg);
+						}else
+							JOptionPane.showMessageDialog(null, "Fitxategi ez bateragarria.");
+						
+					}else if (fitx.getName().endsWith("pdf")) {
+						try {// meter el metodo para leer de un fichero pdf y meterlo en dok
+
+							msg = "Fitxategia gorde da.";
+						} catch (Exception ex) {
+							System.out.println(ex.getMessage());
+						}
+						if (msg != null) {
+							JOptionPane.showMessageDialog(null, msg);
+						}else
+							JOptionPane.showMessageDialog(null, "Fitxategi ez bateragarria.");
+					}else
+						JOptionPane.showMessageDialog(null, "Fitxategi ez bateragarria.");
+				}
 			}
 		});
-		btnDepartamentuakInprimatu.setBounds(103, 225, 297, 47);
-		add(btnDepartamentuakInprimatu);
+		btnDepInprimatu.setBounds(103, 225, 297, 47);
+		add(btnDepInprimatu);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.addItem(".txt");
-		comboBox.addItem(".pdf");
-		comboBox.setBounds(216, 344, 79, 20);
-		add(comboBox);
+		cmbxAtzizkia.addItem(".txt");
+		cmbxAtzizkia.addItem(".pdf");
+		cmbxAtzizkia.setBounds(216, 344, 79, 20);
+		add(cmbxAtzizkia);
+		
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontroladorea kont = new Kontroladorea();
+				kont.aldatuLeihoMenua();
+			}
+		});
+		btnAtzera.setBounds(214, 403, 89, 23);
+		add(btnAtzera);
 
 	}
 }
