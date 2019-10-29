@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import kontroladorea.Kontroladorea;
 
-import java.awt.Button;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -16,14 +15,14 @@ import java.awt.event.ActionEvent;
 
 public class D_Kudeaketa extends JPanel {
 	
-	JFileChooser aukera = new JFileChooser();
-	File fitx;
-	FileInputStream sarrera;
-	String dok = "";
+	private JFileChooser aukera = new JFileChooser();
+	private File fitx;
+	private FileInputStream sarrera;
+	private String dok = "";
 
-	JButton btnDepErregisFitx = new JButton("Departamentuak Erregistratu(Fitxateigitk)");
-	JButton btnDepKudeatu = new JButton("Departamentuak Kudeatu");
-	JButton btnAtzera = new JButton("Atzera");
+	private JButton btnDepErregisFitx = new JButton("Departamentuak Erregistratu(Fitxateigitk)");
+	private JButton btnDepKudeatu = new JButton("Departamentuak Kudeatu");
+	private JButton btnAtzera = new JButton("Atzera");
 	
 	public D_Kudeaketa() {
 		setLayout(null);
@@ -72,8 +71,7 @@ public class D_Kudeaketa extends JPanel {
 	
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoMenua();
+				Kontroladorea.aldatuLeihoMenua();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);

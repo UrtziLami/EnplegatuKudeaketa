@@ -12,14 +12,14 @@ import java.awt.event.ActionEvent;
 public class E_Kudeaketa extends JPanel {
 	private JTable table;
 	
-	JButton btnGehitu = new JButton("Gehitu");
-	JButton btnKendu = new JButton("Kendu");
-	JButton btnAldatu = new JButton("Aldatu");
-	JButton btnLehenengoa = new JButton("<<");
-	JButton btnAztera = new JButton("<");
-	JButton btnHurrengoa = new JButton(">");
-	JButton btnNewButton = new JButton(">>");
-	JButton btnAtzera = new JButton("Atzera");
+	private JButton btnGehitu = new JButton("Gehitu");
+	private JButton btnKendu = new JButton("Kendu");
+	private JButton btnAldatu = new JButton("Aldatu");
+	private JButton btnLehenengoa = new JButton("<<");
+	private JButton btnAztera = new JButton("<");
+	private JButton btnHurrengoa = new JButton(">");
+	private JButton btnNewButton = new JButton(">>");
+	private JButton btnAtzera = new JButton("Atzera");
 
 	public E_Kudeaketa() {
 		setLayout(null);
@@ -64,8 +64,7 @@ public class E_Kudeaketa extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoEnpErregistratu();
+				Kontroladorea.aldatuLeihoEnpErregistratu();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);

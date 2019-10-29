@@ -19,14 +19,14 @@ import java.awt.event.ActionEvent;
 
 public class E_Erregistratu extends JPanel {
 
-	JFileChooser aukera = new JFileChooser();
-	File fitx;
-	FileInputStream sarrera;
-	String dok = "";
+	private JFileChooser aukera = new JFileChooser();
+	private File fitx;
+	private FileInputStream sarrera;
+	private String dok = "";
 	
-	JButton btnEnpErregisFitx = new JButton("Enplegatua erregistratu(Fitxateigitik)");
-	JButton btnEnpKudeaketa = new JButton("Enplegatuak kudeatu");
-	JButton btnAtzera = new JButton("Atzera");
+	private JButton btnEnpErregisFitx = new JButton("Enplegatua erregistratu(Fitxateigitik)");
+	private JButton btnEnpKudeaketa = new JButton("Enplegatuak kudeatu");
+	private JButton btnAtzera = new JButton("Atzera");
 
 	public E_Erregistratu() {
 		setLayout(null);
@@ -78,8 +78,7 @@ public class E_Erregistratu extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoMenua();
+				Kontroladorea.aldatuLeihoMenua();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);

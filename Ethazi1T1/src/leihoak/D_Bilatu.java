@@ -1,7 +1,6 @@
 package leihoak;
 
 import javax.swing.JPanel;
-import java.awt.TextArea;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JLabel;
@@ -11,21 +10,21 @@ import java.awt.event.ActionEvent;
 import kontroladorea.*;
 
 public class D_Bilatu extends JPanel {
-	private JTable table = new JTable();
-	private JTextField textField = new JTextField();
-	private JTextField textField_1;
+	private JTable taula = new JTable();
+	private JTextField txtFIzena = new JTextField();
+	private JTextField txtFKokapena = new JTextField();
 	
-	JButton btnLehena = new JButton("<<");
-	JButton btnAtzera = new JButton("<");
-	JButton btnHurrengoa = new JButton(">");
-	JButton btnAzkena = new JButton(">>");
-	JButton btnGehitu = new JButton("Gehitu");
-	JButton btnAldatu = new JButton("Aldatu");
-	JButton btnKendu = new JButton("Kendu");
-	JButton btnAtzeraa = new JButton("Atzera");
+	private JButton btnLehena = new JButton("<<");
+	private JButton btnAtzera = new JButton("<");
+	private JButton btnHurrengoa = new JButton(">");
+	private JButton btnAzkena = new JButton(">>");
+	private JButton btnGehitu = new JButton("Gehitu");
+	private JButton btnAldatu = new JButton("Aldatu");
+	private JButton btnKendu = new JButton("Kendu");
+	private JButton btnAtzeraa = new JButton("Atzera");
 	
-	JLabel lblIzena = new JLabel("Izena:");
-	JLabel lblKokapena = new JLabel("Kokapena:");
+	private JLabel lblIzena = new JLabel("Izena:");
+	private JLabel lblKokapena = new JLabel("Kokapena:");
 	
 	public D_Bilatu() {
 		setLayout(null);
@@ -43,23 +42,22 @@ public class D_Bilatu extends JPanel {
 		btnAzkena.setBounds(386, 359, 89, 23);
 		add(btnAzkena);
 		 
-		table.setBounds(30, 123, 446, 214);
-		add(table);
+		taula.setBounds(30, 123, 446, 214);
+		add(taula);
 		
 		lblIzena.setBounds(52, 31, 46, 14);
 		add(lblIzena);
 		
-		textField.setBounds(125, 28, 170, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtFIzena.setBounds(125, 28, 170, 20);
+		add(txtFIzena);
+		txtFIzena.setColumns(10);
 		
 		lblKokapena.setBounds(52, 78, 67, 14);
 		add(lblKokapena);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(125, 75, 170, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		txtFKokapena.setBounds(125, 75, 170, 20);
+		add(txtFKokapena);
+		txtFKokapena.setColumns(10);
 		
 		btnGehitu.setBounds(361, 11, 89, 23);
 		add(btnGehitu);
@@ -72,8 +70,7 @@ public class D_Bilatu extends JPanel {
 		
 		btnAtzeraa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoDepKudeatu();
+				Kontroladorea.aldatuLeihoDepKudeatu();
 			}
 		});
 		btnAtzeraa.setBounds(214, 403, 89, 23);

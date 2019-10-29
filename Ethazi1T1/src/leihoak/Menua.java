@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 
 public class Menua extends JPanel {
 	
-	JButton btnDepKudeaketa = new JButton("Departamentuen Kudeaketa");
-	JButton btnEnpKudeaketa = new JButton("Enplegatuen Kudeaketa");
-	JButton btnTxostenakSortu = new JButton("Txostenak Sortu");
+	private JButton btnDepKudeaketa = new JButton("Departamentuen Kudeaketa");
+	private JButton btnEnpKudeaketa = new JButton("Enplegatuen Kudeaketa");
+	private JButton btnTxostenakSortu = new JButton("Txostenak Sortu");
 
 	public Menua() {
 		setLayout(null);

@@ -13,7 +13,7 @@ public class Nagusia {
 
 		Leihoak leihoa = new Leihoak();
 		Menua menua = new Menua();
-		leihoa.aldatuLeihoa(menua);
+		Leihoak.aldatuLeihoa(menua);
 		try {
 			nireLogerra.setup();
 		} catch (IOException e) {

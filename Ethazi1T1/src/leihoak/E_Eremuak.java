@@ -16,17 +16,18 @@ public class E_Eremuak extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	
-	JButton btnAtzera = new JButton("Atzera");
+	private JButton btnAtzera = new JButton("Atzera");
+	private JButton btnGehitu = new JButton("Gehitu");
 	
-	JLabel lblIzenAbizenak = new JLabel("Izen Abizenak:");
-	JLabel lblDepartamentua = new JLabel("Departamentua:");
-	JLabel lblSoldata = new JLabel("Soldata:");
-	JLabel lblArdura = new JLabel("Ardura:");
-	JLabel lblMaila = new JLabel("Maila:");
+	private JLabel lblIzenAbizenak = new JLabel("Izen Abizenak:");
+	private JLabel lblDepartamentua = new JLabel("Departamentua:");
+	private JLabel lblSoldata = new JLabel("Soldata:");
+	private JLabel lblArdura = new JLabel("Ardura:");
+	private JLabel lblMaila = new JLabel("Maila:");
 	
-	JComboBox cmbxDepartamentuak = new JComboBox();
-	JComboBox cmbxArdurak = new JComboBox();
-	JComboBox cmbxMailak = new JComboBox();
+	private JComboBox cmbxDepartamentuak = new JComboBox();
+	private JComboBox cmbxArdurak = new JComboBox();
+	private JComboBox cmbxMailak = new JComboBox();
 	
 	public E_Eremuak() {
 		setLayout(null);
@@ -68,12 +69,18 @@ public class E_Eremuak extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoEnpKudeaketa();
+				Kontroladorea.aldatuLeihoEnpKudeaketa();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);
 		add(btnAtzera);
+		
+		btnGehitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnGehitu.setBounds(214, 352, 89, 23);
+		add(btnGehitu);
 
 	}
 }

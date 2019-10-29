@@ -17,16 +17,14 @@ import java.awt.event.ActionEvent;
 
 public class Txostenak extends JPanel {
 	
-	JFileChooser aukera = new JFileChooser();
-	File fitx;
-	FileOutputStream irteera;
-	String dok = "", msg = null;
+	private JFileChooser aukera = new JFileChooser();
+	private File fitx;
+	private FileOutputStream irteera;
+	private String dok = "", msg = null;
 	
-	JButton btnEnpInprimatu = new JButton("Enplegatuak Inprimatu");
-	JButton btnDepInprimatu = new JButton("Departamentuak Inprimatu");
-	JButton btnAtzera = new JButton("Atzera");
-	
-	JComboBox cmbxAtzizkia = new JComboBox();
+	private JButton btnEnpInprimatu = new JButton("Enplegatuak Inprimatu");
+	private JButton btnDepInprimatu = new JButton("Departamentuak Inprimatu");
+	private JButton btnAtzera = new JButton("Atzera");
 	
 	public Txostenak() {
 		setLayout(null);
@@ -37,7 +35,7 @@ public class Txostenak extends JPanel {
 				if (aukera.showDialog(null, "Gorde") == JFileChooser.APPROVE_OPTION) {
 					fitx = aukera.getSelectedFile();
 					if (fitx.getName().endsWith("txt")) {
-						try {// meter el metodo para escribir de un fichero txt y meterlo en dok
+						try {// meter el metodo para escribir de un fichero txt y meterlo en 'dok'
 							
 							msg = "Fitxategia gorde da.";
 						} catch (Exception ex) {
@@ -72,7 +70,7 @@ public class Txostenak extends JPanel {
 				if (aukera.showDialog(null, "Gorde") == JFileChooser.APPROVE_OPTION) {
 					fitx = aukera.getSelectedFile();
 					if (fitx.getName().endsWith("txt")) {
-						try {// meter el metodo para escribir de un fichero txt y meterlo en dok
+						try {// meter el metodo para escribir de un fichero txt y meterlo en 'dok'
 							
 							msg = "Fitxategia gorde da.";
 						} catch (Exception ex) {
@@ -102,15 +100,9 @@ public class Txostenak extends JPanel {
 		btnDepInprimatu.setBounds(103, 225, 297, 47);
 		add(btnDepInprimatu);
 		
-		cmbxAtzizkia.addItem(".txt");
-		cmbxAtzizkia.addItem(".pdf");
-		cmbxAtzizkia.setBounds(216, 344, 79, 20);
-		add(cmbxAtzizkia);
-		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea kont = new Kontroladorea();
-				kont.aldatuLeihoMenua();
+				Kontroladorea.aldatuLeihoMenua();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);
