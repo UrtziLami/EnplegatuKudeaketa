@@ -70,7 +70,7 @@ public class D_Kudeaketa extends JPanel {
 		
 		btnAtzeraa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoDepKudeatu();
+				Kontroladorea.aldatuLeihoMenua();
 			}
 		});
 		btnAtzeraa.setBounds(214, 403, 89, 23);
