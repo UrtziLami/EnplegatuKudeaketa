@@ -4,12 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 public class D_Kudeaketa extends JPanel {
+	
+	  // MaskFormatter mascara = new MaskFormatter("^[A-Za-z ñ]*$");
+	   JFormattedTextField textField = new JFormattedTextField(mascara);
+	 
+	
 	private JTable taula = new JTable();
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
