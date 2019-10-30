@@ -1,6 +1,9 @@
 package leihoak;
 
 import javax.swing.JPanel;
+
+import kontroladorea.Kontroladorea;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -61,19 +64,19 @@ public class Menua extends JPanel {
 					if (fitx.canRead()) {
 						if (fitx.getName().endsWith("csv")) {
 							try {// meter el metodo para leer de un fichero csv y meterlo en dok
-
+								Kontroladorea.fitxategitikIgo(fitx.getName(),"csv");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
 						} else if (fitx.getName().endsWith("xml")) {
 							try {// meter el metodo para leer de un fichero xml y meterlo en dok
-
+								Kontroladorea.fitxategitikIgo(fitx.getName(),"xml");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
 						} else if (fitx.getName().endsWith("json")) {
 							try {// meter el metodo para leer de un fichero json y meterlo en dok
-
+								Kontroladorea.fitxategitikIgo(fitx.getName(),"json");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}

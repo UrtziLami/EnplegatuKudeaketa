@@ -64,11 +64,15 @@ public class E_Kudeaketa extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoMenua();
+				aldatuLeihoMenua();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);
 		add(btnAtzera);
 
+	}
+	private void aldatuLeihoMenua() {
+		Menua men = new Menua();
+		Leihoak.aldatuLeihoa(men);
 	}
 }

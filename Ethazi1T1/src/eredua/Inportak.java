@@ -26,6 +26,7 @@ public class Inportak {
 			st.executeUpdate();
 			st.close();
 			System.out.println("Gehitu da enplegatua");
+			konexioa.close();
 		} catch (SQLException e) {
 			System.out.println("Ez da gehitu enplegatua");
 		}
@@ -42,9 +43,11 @@ public class Inportak {
 			st.executeUpdate();
 			st.close();
 			System.out.println("Gehitu da departamentua");
+			konexioa.close();
 		} catch (SQLException e) {
 			System.out.println("Ez da gehitu departamentua");
 		}
+		
 	}
 
 }

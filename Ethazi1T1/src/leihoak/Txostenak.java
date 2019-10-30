@@ -102,11 +102,12 @@ public class Txostenak extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoMenua();
-			}
+				Menua men = new Menua();
+				Leihoak.aldatuLeihoa(men);			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);
 		add(btnAtzera);
 
 	}
+	
 }

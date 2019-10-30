@@ -7,13 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 /**
  * 
- * @author Aitor
- * datu basetik selekzioak egiteko
+ * @author Aitor datu basetik selekzioak egiteko
  */
 public class Selekzioak {
-	
+
 	public static ArrayList<Departamentu> ateraDepart() {
 		Statement st = null;
 		Connection konexioa = Konexioa.getKonexioa("EnpKude");
@@ -23,8 +23,7 @@ public class Selekzioak {
 
 		try {
 			st = konexioa.createStatement();
-			ResultSet rs = st.executeQuery(
-					"SELECT * FROM departamentu");
+			ResultSet rs = st.executeQuery("SELECT * FROM departamentu");
 			while (rs.next()) {
 				deptKod = (rs.getInt("DepartamentuKod"));
 				izena = (rs.getString("DepartIzena"));
@@ -32,13 +31,14 @@ public class Selekzioak {
 				Departamentu dept = new Departamentu(deptKod, izena, eraikuntza);
 				deptArray.add(dept);
 			}
+			konexioa.close();
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return deptArray;
 	}
-	
+
 	public static ArrayList<Enplegatu> ateraEnple() {
 		Statement st = null;
 		Connection konexioa = Konexioa.getKonexioa("EnpKude");
@@ -49,8 +49,7 @@ public class Selekzioak {
 
 		try {
 			st = konexioa.createStatement();
-			ResultSet rs = st.executeQuery(
-					"SELECT * FROM enplegatu");
+			ResultSet rs = st.executeQuery("SELECT * FROM enplegatu");
 			while (rs.next()) {
 				enpKod = (rs.getInt("EnplegatuKod"));
 				izena = (rs.getString("IzenAbizena"));
@@ -63,6 +62,7 @@ public class Selekzioak {
 				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod, altaData, izena, ardura, maila);
 				enpArray.add(enp);
 			}
+			konexioa.close();
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -70,5 +70,4 @@ public class Selekzioak {
 		return enpArray;
 	}
 
-	
 }

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import kontroladorea.Nagusia;
+
 public class Konexioa {
 	private String maquina = "localhost";
 	private String usuario = "root";
@@ -20,14 +22,14 @@ public class Konexioa {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.err.println("ERROR AL REGISTRAR EL DRIVER");// mensage error
+			Nagusia.LOGGER.severe("ERROREA DIRVERRA ERREGISTRATZERAKOAN");// mensage error
 			System.exit(0); // parar la ejecución
 		}
 
 		try {
 			kon = DriverManager.getConnection("jdbc:mysql://" + this.maquina, this.usuario, this.clave);
 		} catch (SQLException e) {
-			System.err.println("ERROR AL CONECTAR CON EL SERVIDOR");
+			Nagusia.LOGGER.severe("ERROREA SERVITZARIRA KONEKTATZERAKOAN");
 			System.exit(0); // parar la ejecución
 		}
 		System.out.println("Conectado a " + datuBasea);
@@ -39,7 +41,7 @@ public class Konexioa {
 			konexio = new Konexioa(datuBasea);
 		} else {
 			System.out.println(
-					"No se puede crear el objeto " + datuBasea + " porque ya existe un objeto de la clase SoyUnico");
+					"ezin izan da " + datuBasea + " objetua sortu lehendik existitzen delako ");
 		}
 
 		return kon;

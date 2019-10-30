@@ -1,13 +1,13 @@
 package leihoak;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import kontroladorea.*;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class D_Kudeaketa extends JPanel {
 	private JTable taula = new JTable();
@@ -70,7 +70,7 @@ public class D_Kudeaketa extends JPanel {
 		
 		btnAtzeraa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoMenua();
+				aldatuLeihoMenua();
 			}
 		});
 		btnAtzeraa.setBounds(214, 403, 89, 23);
@@ -78,4 +78,9 @@ public class D_Kudeaketa extends JPanel {
 
 
 	}
+	private void aldatuLeihoMenua() {
+		Menua men = new Menua();
+		Leihoak.aldatuLeihoa(men);
+	}
+	
 }

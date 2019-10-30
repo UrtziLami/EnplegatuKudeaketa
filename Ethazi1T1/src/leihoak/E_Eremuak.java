@@ -69,7 +69,7 @@ public class E_Eremuak extends JPanel {
 		
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoEnpKudeaketa();
+				aldatuLeihoEnpKudeaketa();
 			}
 		});
 		btnAtzera.setBounds(214, 403, 89, 23);
@@ -82,5 +82,10 @@ public class E_Eremuak extends JPanel {
 		btnGehitu.setBounds(214, 352, 89, 23);
 		add(btnGehitu);
 
+	}
+	
+	private  void aldatuLeihoEnpKudeaketa() {
+		E_Kudeaketa enp = new E_Kudeaketa();
+		Leihoak.aldatuLeihoa(enp);
 	}
 }
