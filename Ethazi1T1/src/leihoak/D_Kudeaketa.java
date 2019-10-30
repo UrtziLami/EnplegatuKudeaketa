@@ -1,81 +1,81 @@
 package leihoak;
 
 import javax.swing.JPanel;
-
-import kontroladorea.Kontroladorea;
-
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-
+import javax.swing.JTable;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
 import java.awt.event.ActionEvent;
+import kontroladorea.*;
 
 public class D_Kudeaketa extends JPanel {
+	private JTable taula = new JTable();
+	private JTextField txtFIzena = new JTextField();
+	private JTextField txtFKokapena = new JTextField();
 	
-	private JFileChooser aukera = new JFileChooser();
-	private File fitx;
-	private FileInputStream sarrera;
-	private String dok = "";
-
-	private JButton btnDepErregisFitx = new JButton("Departamentuak Erregistratu(Fitxateigitk)");
-	private JButton btnDepKudeatu = new JButton("Departamentuak Kudeatu");
-	private JButton btnAtzera = new JButton("Atzera");
+	private JButton btnLehena = new JButton("<<");
+	private JButton btnAtzera = new JButton("<");
+	private JButton btnHurrengoa = new JButton(">");
+	private JButton btnAzkena = new JButton(">>");
+	private JButton btnGehitu = new JButton("Gehitu");
+	private JButton btnAldatu = new JButton("Aldatu");
+	private JButton btnKendu = new JButton("Kendu");
+	private JButton btnAtzeraa = new JButton("Atzera");
+	
+	private JLabel lblIzena = new JLabel("Izena:");
+	private JLabel lblKokapena = new JLabel("Kokapena:");
 	
 	public D_Kudeaketa() {
 		setLayout(null);
-		setBounds(150, 150, 520, 489);
+		setBounds(150, 150, 520, 488);
 		
-		btnDepErregisFitx.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (aukera.showDialog(null, "Ireki") == JFileChooser.APPROVE_OPTION) {
-					fitx = aukera.getSelectedFile();
-					if (fitx.canRead()) {
-						if (fitx.getName().endsWith("csv")) {
-							try {// meter el metodo para leer de un fichero csv y meterlo en dok
-
-							} catch (Exception ex) {
-								System.out.println(ex.getMessage());
-							}
-						} else if (fitx.getName().endsWith("xml")) {
-							try {// meter el metodo para leer de un fichero xml y meterlo en dok
-
-							} catch (Exception ex) {
-								System.out.println(ex.getMessage());
-							}
-						} else if (fitx.getName().endsWith("json")) {
-							try {// meter el metodo para leer de un fichero json y meterlo en dok
-
-							} catch (Exception ex) {
-								System.out.println(ex.getMessage());
-							}
-						}else
-							JOptionPane.showMessageDialog(null, "Fitxategi ez bateragarria.");
-					}
-				}
-			}
-		});
-		btnDepErregisFitx.setBounds(79, 82, 343, 64);
-		add(btnDepErregisFitx);
+		btnLehena.setBounds(30, 359, 89, 23);
+		add(btnLehena);
 		
-		btnDepKudeatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				D_Bilatu dep = new D_Bilatu();
-				Leihoak.aldatuLeihoa(dep);
-			}
-		});
-		btnDepKudeatu.setBounds(79, 209, 343, 64);
-		add(btnDepKudeatu);
-	
-		btnAtzera.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Kontroladorea.aldatuLeihoMenua();
-			}
-		});
-		btnAtzera.setBounds(214, 403, 89, 23);
+		btnAtzera.setBounds(149, 359, 89, 23);
 		add(btnAtzera);
+		
+		btnHurrengoa.setBounds(273, 359, 89, 23);
+		add(btnHurrengoa);
+		
+		btnAzkena.setBounds(386, 359, 89, 23);
+		add(btnAzkena);
+		 
+		taula.setBounds(30, 123, 446, 214);
+		add(taula);
+		
+		lblIzena.setBounds(52, 31, 46, 14);
+		add(lblIzena);
+		
+		txtFIzena.setBounds(125, 28, 170, 20);
+		add(txtFIzena);
+		txtFIzena.setColumns(10);
+		
+		lblKokapena.setBounds(52, 78, 67, 14);
+		add(lblKokapena);
+		
+		txtFKokapena.setBounds(125, 75, 170, 20);
+		add(txtFKokapena);
+		txtFKokapena.setColumns(10);
+		
+		btnGehitu.setBounds(361, 11, 89, 23);
+		add(btnGehitu);
+		
+		btnAldatu.setBounds(361, 79, 89, 23);
+		add(btnAldatu);
+		
+		btnKendu.setBounds(361, 45, 89, 23);
+		add(btnKendu);
+		
+		btnAtzeraa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontroladorea.aldatuLeihoDepKudeatu();
+			}
+		});
+		btnAtzeraa.setBounds(214, 403, 89, 23);
+		add(btnAtzeraa);
+
 
 	}
 }
