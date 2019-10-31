@@ -1,2 +1,2 @@
-oct 31, 2019 9:29:35 AM eredua.Konexioa <init>
+oct 31, 2019 9:54:40 AM eredua.Konexioa <init>
 GRAVE: ERROREA SERBITZARIRA KONEKTATZERAKOAN

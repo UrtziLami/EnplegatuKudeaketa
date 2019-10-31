@@ -25,7 +25,7 @@ public class Konexioa {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			Nagusia.LOGGER.severe("ERROREA DIRVERRA ERREGISTRATZERAKOAN");// mensage error
+			Nagusia.LOGGER.severe("ERROREA DIRVERRA ERREGISTRATZERAKOAN");// mensaje error
 			System.exit(0); // parar la ejecución
 		}
 
