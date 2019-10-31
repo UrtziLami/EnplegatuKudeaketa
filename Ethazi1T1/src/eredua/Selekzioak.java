@@ -16,14 +16,14 @@ public class Selekzioak {
 
 	public static ArrayList<Departamentu> ateraDepart() {
 		Statement st = null;
-		Connection konexioa = Konexioa.getKonexioa("EnpKude");
+		Connection konexioa = Konexioa.getKonexioa("ertert");
 		ArrayList<Departamentu> deptArray = new ArrayList<Departamentu>();
 		String izena, eraikuntza;
 		int deptKod;
 
 		try {
 			st = konexioa.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM departamentu");
+			ResultSet rs = st.executeQuery("SELECT * FROM `departamentu`");
 			while (rs.next()) {
 				deptKod = (rs.getInt("DepartamentuKod"));
 				izena = (rs.getString("DepartIzena"));

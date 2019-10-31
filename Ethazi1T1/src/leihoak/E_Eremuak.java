@@ -6,10 +6,11 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
-import kontroladorea.Kontroladorea;
+import kontroladorea.*;
 
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class E_Eremuak extends JPanel {
@@ -28,6 +29,8 @@ public class E_Eremuak extends JPanel {
 	private JComboBox cmbxDepartamentuak = new JComboBox();
 	private JComboBox cmbxArdurak = new JComboBox();
 	private JComboBox cmbxMailak = new JComboBox();
+	
+	private ArrayList<String> deptak = new ArrayList<String>();
 	
 	public E_Eremuak() {
 		setLayout(null);
@@ -54,6 +57,10 @@ public class E_Eremuak extends JPanel {
 		textField.setColumns(10);
 		
 		cmbxDepartamentuak.setBounds(177, 111, 109, 20);
+		deptak = Kontroladorea.deptIzenak();
+		for (int i = 0; i < deptak.size(); i++) {
+			cmbxDepartamentuak.addItem(deptak.get(i));
+		}
 		add(cmbxDepartamentuak);
 		
 		textField_1 = new JTextField();

@@ -37,6 +37,17 @@ public class Kontroladorea {
 		departamentuenLista = Selekzioak.ateraDepart();
 		return departamentuenLista;
 	}
+	
+	public static ArrayList<String> deptIzenak(){
+		ArrayList<String> izenak = new ArrayList<String>();
+		ArrayList<Departamentu> deptak = new ArrayList<Departamentu>();
+		deptak = lortuDepartamentuak();
+		for (int i = 0; i < deptak.size(); i++) {
+			izenak.add(deptak.get(i).getDepartIzena());
+		}
+		return izenak;
+		
+	}
 
 	public static ArrayList<Enplegatu> lortuEnplegatuak() {
 		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
