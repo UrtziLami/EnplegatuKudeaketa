@@ -11,12 +11,15 @@ public class Konexioa {
 	private String usuario = "root";
 	private String clave = "";
 	private int puerto = 3306;
+	private String  serbitzaria    = "";
 	private static Konexioa konexio = null;
 	private static Connection kon;
 
 	// KONSTRUKTOREA
 	// datu basearen izena jasotzen du
 	private Konexioa(String datuBasea) {
+		this.serbitzaria="jdbc:mysql://"+this.maquina+":"+
+                this.puerto+"/"+datuBasea;
 
 		// driverra erregistratu
 		try {
@@ -27,7 +30,7 @@ public class Konexioa {
 		}
 
 		try {
-			kon = DriverManager.getConnection("jdbc:mysql://" + this.maquina, this.usuario, this.clave);
+			kon = DriverManager.getConnection(this.serbitzaria + this.maquina, this.usuario, this.clave);
 		} catch (SQLException e) {
 			Nagusia.LOGGER.severe("ERROREA SERVITZARIRA KONEKTATZERAKOAN");
 			System.exit(0); // parar la ejecución
