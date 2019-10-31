@@ -18,7 +18,7 @@ public class Konexioa {
 	// KONSTRUKTOREA
 	// datu basearen izena jasotzen du
 	private Konexioa(String datuBasea) {
-		this.serbitzaria="jdbc:mysql://"+this.maquina+":"+
+		this.serbitzaria="jdbc:mariadb://"+this.maquina+":"+
                 this.puerto+"/"+datuBasea;
 
 		// driverra erregistratu
@@ -32,7 +32,7 @@ public class Konexioa {
 		try {
 			kon = DriverManager.getConnection(this.serbitzaria + this.maquina, this.usuario, this.clave);
 		} catch (SQLException e) {
-			Nagusia.LOGGER.severe("ERROREA SERVITZARIRA KONEKTATZERAKOAN");
+			Nagusia.LOGGER.severe("ERROREA SERBITZARIRA KONEKTATZERAKOAN");
 			System.exit(0); // parar la ejecución
 		}
 		System.out.println("Conectado a " + datuBasea);

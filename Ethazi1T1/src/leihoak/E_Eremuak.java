@@ -69,9 +69,20 @@ public class E_Eremuak extends JPanel {
 		textField_1.setColumns(10);
 		
 		cmbxArdurak.setBounds(177, 228, 109, 20);
+		cmbxArdurak.addItem("Tutorea");
+		cmbxArdurak.addItem("Irakaslea");
+		cmbxArdurak.addItem("Idazkaria");
+		cmbxArdurak.addItem("Atezaina");
+		cmbxArdurak.addItem("Zuzendaria");
+		cmbxArdurak.addItem("Mintegi-burua");
 		add(cmbxArdurak);
 		
 		cmbxMailak.setBounds(177, 293, 109, 20);
+		cmbxMailak.addItem("Mintegi-buruak");
+		cmbxMailak.addItem("Zuzendari orokorra");
+		cmbxMailak.addItem("Ikasketa burua");
+		cmbxMailak.addItem("Zuzendari ordea");
+		cmbxMailak.addItem("Idazkaria");
 		add(cmbxMailak);
 		
 		btnAtzera.addActionListener(new ActionListener() {

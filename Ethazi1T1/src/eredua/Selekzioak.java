@@ -16,7 +16,7 @@ public class Selekzioak {
 
 	public static ArrayList<Departamentu> ateraDepart() {
 		Statement st = null;
-		Connection konexioa = Konexioa.getKonexioa("ertert");
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		ArrayList<Departamentu> deptArray = new ArrayList<Departamentu>();
 		String izena, eraikuntza;
 		int deptKod;
