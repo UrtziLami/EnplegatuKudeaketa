@@ -5,13 +5,17 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Inportak {
 
 	public static void erregistratuEnplegatuak(Enplegatu enp) {
-		Connection konexioa = Konexioa.getKonexioa("EnpKude");
+		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date(System.currentTimeMillis());
+		System.out.println();
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
 					"INSERT INTO `enplegatu` (`IzenAbizena`, `DepartKod`, `Soldata`, `Ardura`, `AltaData`, `ZuzendariKod`, `Maila`)"
@@ -20,7 +24,7 @@ public class Inportak {
 			st.setInt(2, enp.getDepartKod());
 			st.setInt(3, enp.getSoldata());
 			st.setString(4, enp.getArdura());
-			st.setDate(5, enp.getAltaData());
+			st.setString(5, formatter.format(date));
 			st.setInt(6, enp.getZuzendariKod());
 			st.setString(7, enp.getMaila());
 			st.executeUpdate();
@@ -33,7 +37,7 @@ public class Inportak {
 	}
 	
 	public static void erregistratuDepartamentuak(Departamentu dept) {
-		Connection konexioa = Konexioa.getKonexioa("EnpKude");
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
 					"INSERT INTO `departamentu` (`DepartIzena`, `Eraikuntza`)"

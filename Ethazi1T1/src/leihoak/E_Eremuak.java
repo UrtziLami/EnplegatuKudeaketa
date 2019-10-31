@@ -7,6 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 import kontroladorea.*;
+import eredua.*;
 
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -14,8 +15,8 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class E_Eremuak extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtfIzenAbizenak = new JTextField();
+	private JTextField txtfSoldata = new JTextField();
 	
 	private JButton btnAtzera = new JButton("Atzera");
 	private JButton btnGehitu = new JButton("Gehitu");
@@ -25,12 +26,18 @@ public class E_Eremuak extends JPanel {
 	private JLabel lblSoldata = new JLabel("Soldata:");
 	private JLabel lblArdura = new JLabel("Ardura:");
 	private JLabel lblMaila = new JLabel("Maila:");
+	private JLabel lblZuzendariKodea = new JLabel("Zuzendari Kodea:");
 	
 	private JComboBox cmbxDepartamentuak = new JComboBox();
 	private JComboBox cmbxArdurak = new JComboBox();
 	private JComboBox cmbxMailak = new JComboBox();
+	private JComboBox cmbxZuzKod = new JComboBox();
 	
-	private ArrayList<String> deptak = new ArrayList<String>();
+	private ArrayList<Departamentu> deptak = new ArrayList<Departamentu>();
+	private ArrayList<Integer> zuzKod = new ArrayList<Integer>();
+	
+	private String izenAbizena, ardura, maila;
+	private int soldata, zuzendariKod, depart;
 	
 	public E_Eremuak() {
 		setLayout(null);
@@ -39,36 +46,35 @@ public class E_Eremuak extends JPanel {
 		lblIzenAbizenak.setBounds(67, 51, 109, 14);
 		add(lblIzenAbizenak);
 		
-		lblDepartamentua.setBounds(67, 114, 109, 14);
+		lblDepartamentua.setBounds(67, 101, 109, 14);
 		add(lblDepartamentua);
 		
-		lblSoldata.setBounds(67, 172, 46, 14);
+		lblSoldata.setBounds(67, 155, 46, 14);
 		add(lblSoldata);
 		
-		lblArdura.setBounds(67, 231, 46, 14);
+		lblArdura.setBounds(67, 207, 46, 14);
 		add(lblArdura);
 		
-		lblMaila.setBounds(67, 296, 46, 14);
+		lblMaila.setBounds(67, 301, 46, 14);
 		add(lblMaila);
 		
-		textField = new JTextField();
-		textField.setBounds(177, 48, 218, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtfIzenAbizenak = new JTextField();
+		txtfIzenAbizenak.setBounds(177, 48, 261, 20);
+		add(txtfIzenAbizenak);
+		txtfIzenAbizenak.setColumns(10);
 		
-		cmbxDepartamentuak.setBounds(177, 111, 109, 20);
-		deptak = Kontroladorea.deptIzenak();
+		cmbxDepartamentuak.setBounds(177, 98, 261, 20);
+		deptak = Kontroladorea.lortuDepartamentuak();
 		for (int i = 0; i < deptak.size(); i++) {
-			cmbxDepartamentuak.addItem(deptak.get(i));
+			cmbxDepartamentuak.addItem(deptak.get(i).getDepartIzena());
 		}
 		add(cmbxDepartamentuak);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(177, 169, 218, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		txtfSoldata.setBounds(177, 152, 261, 20);
+		add(txtfSoldata);
+		txtfSoldata.setColumns(10);
 		
-		cmbxArdurak.setBounds(177, 228, 109, 20);
+		cmbxArdurak.setBounds(177, 204, 155, 20);
 		cmbxArdurak.addItem("Tutorea");
 		cmbxArdurak.addItem("Irakaslea");
 		cmbxArdurak.addItem("Idazkaria");
@@ -77,12 +83,13 @@ public class E_Eremuak extends JPanel {
 		cmbxArdurak.addItem("Mintegi-burua");
 		add(cmbxArdurak);
 		
-		cmbxMailak.setBounds(177, 293, 109, 20);
-		cmbxMailak.addItem("Mintegi-buruak");
+		cmbxMailak.setBounds(177, 298, 155, 20);
+		cmbxMailak.addItem("Mintegi-burua");
 		cmbxMailak.addItem("Zuzendari orokorra");
 		cmbxMailak.addItem("Ikasketa burua");
 		cmbxMailak.addItem("Zuzendari ordea");
 		cmbxMailak.addItem("Idazkaria");
+		cmbxMailak.addItem("Zuzendari Nagusia");
 		add(cmbxMailak);
 		
 		btnAtzera.addActionListener(new ActionListener() {
@@ -95,10 +102,29 @@ public class E_Eremuak extends JPanel {
 		
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Departamentu dept =deptak.get(cmbxDepartamentuak.getSelectedIndex());
+				depart = dept.getDepartKod();
+				soldata = Integer.parseInt(txtfSoldata.getText());
+				izenAbizena = txtfIzenAbizenak.getText();
+				ardura = (String) cmbxArdurak.getSelectedItem();
+				maila = (String) cmbxMailak.getSelectedItem();
+				zuzendariKod = (int) cmbxZuzKod.getSelectedItem();
+				Kontroladorea.sartuEnp(depart, soldata, zuzendariKod, izenAbizena, ardura, maila);
 			}
 		});
 		btnGehitu.setBounds(214, 352, 89, 23);
 		add(btnGehitu);
+		
+		
+		lblZuzendariKodea.setBounds(67, 252, 109, 14);
+		add(lblZuzendariKodea);
+		
+		cmbxZuzKod.setBounds(177, 249, 155, 20);
+		zuzKod = Kontroladorea.lortuZuzendariKod();
+		for (int i = 0; i < zuzKod.size(); i++) {
+			cmbxZuzKod.addItem(zuzKod.get(i));
+		}
+		add(cmbxZuzKod);
 
 	}
 	

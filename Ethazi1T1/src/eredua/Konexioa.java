@@ -30,7 +30,7 @@ public class Konexioa {
 		}
 
 		try {
-			kon = DriverManager.getConnection(this.serbitzaria + this.maquina, this.usuario, this.clave);
+			kon = DriverManager.getConnection(this.serbitzaria, this.usuario, this.clave);
 		} catch (SQLException e) {
 			Nagusia.LOGGER.severe("ERROREA SERBITZARIRA KONEKTATZERAKOAN");
 			System.exit(0); // parar la ejecución

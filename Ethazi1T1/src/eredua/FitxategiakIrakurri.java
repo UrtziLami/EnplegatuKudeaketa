@@ -41,7 +41,7 @@ public class FitxategiakIrakurri {
 			int zuzendariKod = (int) EnplegatuObjetua.get("zuzendariKod");
 			int departKod = (int) EnplegatuObjetua.get("departKod");
 
-			Date AltaData = (Date) EnplegatuObjetua.get("AltaData");
+			String AltaData = (String) EnplegatuObjetua.get("AltaData");
 			String IzenAbizena = (String) EnplegatuObjetua.get("IzenAbizena");
 			String ardura = (String) EnplegatuObjetua.get("ardura");
 			String maila = (String) EnplegatuObjetua.get("maila");

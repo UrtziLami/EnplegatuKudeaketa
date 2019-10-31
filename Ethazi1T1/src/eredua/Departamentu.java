@@ -7,7 +7,7 @@ public class Departamentu {
 	public Departamentu() {
 	}
 
-	public Departamentu(int departKod, String eraikuntza, String departIzena) {
+	public Departamentu(int departKod, String departIzena, String eraikuntza) {
 		this.departKod = departKod;
 		this.eraikuntza = eraikuntza;
 		DepartIzena = departIzena;

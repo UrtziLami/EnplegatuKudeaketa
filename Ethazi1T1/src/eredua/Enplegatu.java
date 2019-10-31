@@ -3,23 +3,23 @@ package eredua;
 import java.sql.Date;
 
 public class Enplegatu {
+
 	private int enpKod, departKod, soldata, zuzendariKod;
-	private Date AltaData;
-	private String IzenAbizena, ardura, maila;
-
-	public Enplegatu() {
-	}
-
-	public Enplegatu(int enpKod, int departKod, int soldata, int zuzendariKod, Date altaData, String izenAbizena,
-			String ardura, String maila) {
+	private String IzenAbizena, ardura, maila, AltaData;
+	
+	public Enplegatu(int enpKod, int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura,
+			String maila, String altaData) {
 		this.enpKod = enpKod;
 		this.departKod = departKod;
 		this.soldata = soldata;
 		this.zuzendariKod = zuzendariKod;
-		AltaData = altaData;
 		IzenAbizena = izenAbizena;
 		this.ardura = ardura;
 		this.maila = maila;
+		AltaData = altaData;
+	}
+
+	public Enplegatu() {
 	}
 
 	public int getZuzendariKod() {
@@ -62,14 +62,6 @@ public class Enplegatu {
 		this.soldata = soldata;
 	}
 
-	public Date getAltaData() {
-		return AltaData;
-	}
-
-	public void setAltaData(Date altaData) {
-		AltaData = altaData;
-	}
-
 	public String getIzenAbizena() {
 		return IzenAbizena;
 	}
@@ -84,6 +76,14 @@ public class Enplegatu {
 
 	public void setArdura(String ardura) {
 		this.ardura = ardura;
+	}
+
+	public String getAltaData() {
+		return AltaData;
+	}
+
+	public void setAltaData(String altaData) {
+		AltaData = altaData;
 	}
 
 }

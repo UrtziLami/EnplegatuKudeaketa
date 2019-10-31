@@ -1,5 +1,6 @@
 package kontroladorea;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import eredua.Departamentu;
@@ -37,22 +38,40 @@ public class Kontroladorea {
 		departamentuenLista = Selekzioak.ateraDepart();
 		return departamentuenLista;
 	}
-	
-	public static ArrayList<String> deptIzenak(){
-		ArrayList<String> izenak = new ArrayList<String>();
-		ArrayList<Departamentu> deptak = new ArrayList<Departamentu>();
-		deptak = lortuDepartamentuak();
-		for (int i = 0; i < deptak.size(); i++) {
-			izenak.add(deptak.get(i).getDepartIzena());
-		}
-		return izenak;
-		
-	}
 
 	public static ArrayList<Enplegatu> lortuEnplegatuak() {
 		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
 		enplegatuenLista = Selekzioak.ateraEnple();
 		return enplegatuenLista;
+	}
+
+	public static ArrayList<Integer> lortuZuzendariKod() {
+		ArrayList<Integer> kodeak = new ArrayList<Integer>();
+		ArrayList<Enplegatu> enpak = new ArrayList<Enplegatu>();
+		enpak = lortuEnplegatuak();
+		for (int i = 0; i < enpak.size(); i++) {
+			kodeak.add(enpak.get(i).getZuzendariKod());
+		}
+		return kodeak;
+	}
+	
+	public static void sartuEnp(int departKod, int soldata, int zuzendariKod, String izenAbizena,
+			String ardura, String maila) {
+		Enplegatu enp = new Enplegatu();
+		enp.setDepartKod(departKod);
+		enp.setArdura(ardura.toUpperCase());
+		enp.setSoldata(soldata);
+		enp.setZuzendariKod(zuzendariKod);
+		enp.setIzenAbizena(izenAbizena.toUpperCase());
+		enp.setMaila(maila.toUpperCase());
+		Inportak.erregistratuEnplegatuak(enp);
+	}
+	
+	public static void sartuDept(String departIzena, String eraikuntza) {
+		Departamentu dept = new Departamentu();
+		dept.setDepartIzena(departIzena.toUpperCase());
+		dept.setEraikuntza(eraikuntza.toUpperCase());
+		Inportak.erregistratuDepartamentuak(dept);
 	}
 
 }

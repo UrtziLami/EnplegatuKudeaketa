@@ -22,6 +22,7 @@ public class Nagusia {
 		Leihoak leihoa = new Leihoak();
 		Menua menua = new Menua();
 		Leihoak.aldatuLeihoa(menua);
+		
 	}
 
 }

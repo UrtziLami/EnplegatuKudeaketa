@@ -15,11 +15,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import kontroladorea.Kontroladorea;
+
 public class D_Kudeaketa extends JPanel {
 	
 	private JTable taula = new JTable();
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
+	
+	private String izena, kokapena;
 	
 	private JButton btnLehena = new JButton("<<");
 	private JButton btnAtzera = new JButton("<");
@@ -81,7 +85,15 @@ public class D_Kudeaketa extends JPanel {
 		txtFKokapena.setColumns(10);
 		txtFKokapena.addKeyListener(letrakBakarrik);
 		
+		
 		btnGehitu.setBounds(361, 11, 89, 23);
+		btnGehitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				izena = txtFIzena.getText();
+				kokapena = txtFKokapena.getText();
+				Kontroladorea.sartuDept(izena, kokapena);
+			}
+		});
 		add(btnGehitu);
 		
 		btnAldatu.setBounds(361, 79, 89, 23);

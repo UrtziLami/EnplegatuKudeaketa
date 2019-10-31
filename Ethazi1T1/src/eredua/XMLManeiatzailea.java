@@ -53,7 +53,7 @@ public class XMLManeiatzailea extends DefaultHandler {
 			break;
 		case "AltaData":
 			try {
-				enplegatu.setAltaData((Date) new SimpleDateFormat("yyyy/MM/dd").parse(balioa));
+				enplegatu.setAltaData(new SimpleDateFormat("yyyy/MM/dd").parse(balioa).toString());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

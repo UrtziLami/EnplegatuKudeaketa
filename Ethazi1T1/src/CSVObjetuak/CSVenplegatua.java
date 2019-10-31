@@ -9,7 +9,7 @@ public class CSVenplegatua {
 	    @CsvBindByName(column = "soldata")
 	    private int soldata;
 	    @CsvBindByName(column = "AltaData")
-	    private Date AltaData;
+	    private String AltaData;
 	    @CsvBindByName(column = "ardura")
 	    private String ardura;
 	    @CsvBindByName(column = "maila")
@@ -26,7 +26,7 @@ public class CSVenplegatua {
 		public int getSoldata() {
 			return soldata;
 		}
-		public Date getAltaData() {
+		public String getAltaData() {
 			return AltaData;
 		}
 		public String getArdura() {
@@ -47,7 +47,7 @@ public class CSVenplegatua {
 		public void setSoldata(int soldata) {
 			this.soldata = soldata;
 		}
-		public void setAltaData(Date altaData) {
+		public void setAltaData(String altaData) {
 			AltaData = altaData;
 		}
 		public void setArdura(String ardura) {

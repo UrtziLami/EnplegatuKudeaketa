@@ -31,7 +31,6 @@ public class Selekzioak {
 				Departamentu dept = new Departamentu(deptKod, izena, eraikuntza);
 				deptArray.add(dept);
 			}
-			konexioa.close();
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -41,33 +40,31 @@ public class Selekzioak {
 
 	public static ArrayList<Enplegatu> ateraEnple() {
 		Statement st = null;
-		Connection konexioa = Konexioa.getKonexioa("EnpKude");
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		ArrayList<Enplegatu> enpArray = new ArrayList<Enplegatu>();
-		String izena, ardura, maila;
+		String izena, ardura, maila, altaData;
 		int enpKod, deptKod, soldata, zuzendariKod;
-		Date altaData;
 
 		try {
 			st = konexioa.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM enplegatu");
+			ResultSet rs = st.executeQuery("SELECT * FROM `enplegatu`");
 			while (rs.next()) {
 				enpKod = (rs.getInt("EnplegatuKod"));
 				izena = (rs.getString("IzenAbizena"));
 				deptKod = (rs.getInt("DepartKod"));
 				soldata = (rs.getInt("Soldata"));
 				ardura = (rs.getString("Ardura"));
-				altaData = (rs.getDate("AltaData"));
+				altaData = (rs.getString("AltaData"));
 				zuzendariKod = (rs.getInt("ZuzendariKod"));
 				maila = (rs.getString("Maila"));
 				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod, altaData, izena, ardura, maila);
 				enpArray.add(enp);
 			}
-			konexioa.close();
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return enpArray;
 	}
-
+	
 }
