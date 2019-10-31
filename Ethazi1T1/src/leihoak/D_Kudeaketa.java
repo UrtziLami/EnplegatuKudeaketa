@@ -2,8 +2,12 @@ package leihoak;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+import javax.swing.InputVerifier;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,10 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 public class D_Kudeaketa extends JPanel {
-	
-	  // MaskFormatter mascara = new MaskFormatter("^[A-Za-z ñ]*$");
-	   JFormattedTextField textField = new JFormattedTextField(mascara);
-	 
 	
 	private JTable taula = new JTable();
 	private JTextField txtFIzena = new JTextField();
@@ -32,6 +32,19 @@ public class D_Kudeaketa extends JPanel {
 	
 	private JLabel lblIzena = new JLabel("Izena:");
 	private JLabel lblKokapena = new JLabel("Kokapena:");
+	private KeyAdapter letrakBakarrik= new KeyAdapter()
+	{
+		   public void keyTyped(KeyEvent e)
+		   {
+		      char caracter = e.getKeyChar();
+		      if(((caracter < 'A') ||
+		         (caracter > 'z')) &&
+		         (caracter != ' ' ))
+		      {
+		         e.consume(); 
+		      }
+		   }
+		};
 	
 	public D_Kudeaketa() {
 		setLayout(null);
@@ -58,6 +71,7 @@ public class D_Kudeaketa extends JPanel {
 		txtFIzena.setBounds(125, 28, 170, 20);
 		add(txtFIzena);
 		txtFIzena.setColumns(10);
+		txtFIzena.addKeyListener(letrakBakarrik);
 		
 		lblKokapena.setBounds(52, 78, 67, 14);
 		add(lblKokapena);
@@ -65,6 +79,7 @@ public class D_Kudeaketa extends JPanel {
 		txtFKokapena.setBounds(125, 75, 170, 20);
 		add(txtFKokapena);
 		txtFKokapena.setColumns(10);
+		txtFKokapena.addKeyListener(letrakBakarrik);
 		
 		btnGehitu.setBounds(361, 11, 89, 23);
 		add(btnGehitu);
