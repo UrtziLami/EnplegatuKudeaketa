@@ -38,12 +38,31 @@ public class Kontroladorea {
 		departamentuenLista = Selekzioak.ateraDepart();
 		return departamentuenLista;
 	}
-
 	public static ArrayList<Enplegatu> lortuEnplegatuak() {
 		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
 		enplegatuenLista = Selekzioak.ateraEnple();
 		return enplegatuenLista;
 	}
+
+	public static Object[][] lortuEnplegatuenDatuak() {
+		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
+		enplegatuenLista = lortuEnplegatuak();
+		Object[][] datuak =new  Object[enplegatuenLista.size()][8];
+		int cont=0;
+		for (Enplegatu enplegatu : enplegatuenLista) {
+			datuak[cont][0]=enplegatu.getEnpKod();
+			datuak[cont][1]=enplegatu.getIzenAbizena();
+			datuak[cont][2]=enplegatu.getDepartKod();
+			datuak[cont][3]=enplegatu.getSoldata();
+			datuak[cont][4]=enplegatu.getArdura();
+			datuak[cont][5]=enplegatu.getAltaData();
+			datuak[cont][6]=enplegatu.getZuzendariKod();
+			datuak[cont][7]=enplegatu.getMaila();
+			cont++;
+		}
+		return datuak;
+	}
+	
 
 	public static ArrayList<Integer> lortuZuzendariKod() {
 		ArrayList<Integer> kodeak = new ArrayList<Integer>();
