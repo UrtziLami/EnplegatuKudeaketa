@@ -1,9 +1,9 @@
 package leihoak;
 
 import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 
 public class Leihoak extends JFrame {
 

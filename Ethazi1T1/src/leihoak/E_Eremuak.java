@@ -1,18 +1,20 @@
+
 package leihoak;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import kontroladorea.*;
-import eredua.*;
-
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+import eredua.Departamentu;
+import kontroladorea.Kontroladorea;
 
 public class E_Eremuak extends JPanel {
 	private JTextField txtfIzenAbizenak = new JTextField();
@@ -38,6 +40,32 @@ public class E_Eremuak extends JPanel {
 	
 	private String izenAbizena, ardura, maila;
 	private int soldata, zuzendariKod, depart;
+	private KeyAdapter letrakBakarrik= new KeyAdapter()
+	{
+		   public void keyTyped(KeyEvent e)
+		   {
+		      char caracter = e.getKeyChar();
+		      if(((caracter < 'A') ||
+		         (caracter > 'z')) &&
+		         (caracter != ' ' ))
+		      {
+		         e.consume(); 
+		      }
+		   }
+		};
+		private KeyAdapter zenbakiakBakarrik= new KeyAdapter()
+		{
+			   public void keyTyped(KeyEvent e)
+			   {
+			      char caracter = e.getKeyChar();
+			      if(((caracter < '0') ||
+			         (caracter > '9')))
+			      {
+			         e.consume(); 
+			      }
+			   }
+			};
+		
 	
 	public E_Eremuak() {
 		setLayout(null);
@@ -62,6 +90,7 @@ public class E_Eremuak extends JPanel {
 		txtfIzenAbizenak.setBounds(177, 48, 261, 20);
 		add(txtfIzenAbizenak);
 		txtfIzenAbizenak.setColumns(10);
+		txtfIzenAbizenak.addKeyListener(letrakBakarrik);
 		
 		cmbxDepartamentuak.setBounds(177, 98, 261, 20);
 		deptak = Kontroladorea.lortuDepartamentuak();
@@ -73,6 +102,7 @@ public class E_Eremuak extends JPanel {
 		txtfSoldata.setBounds(177, 152, 261, 20);
 		add(txtfSoldata);
 		txtfSoldata.setColumns(10);
+		txtfSoldata.addKeyListener(letrakBakarrik);
 		
 		cmbxArdurak.setBounds(177, 204, 155, 20);
 		cmbxArdurak.addItem("Tutorea");

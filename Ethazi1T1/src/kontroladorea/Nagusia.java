@@ -3,9 +3,9 @@ package kontroladorea;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import eredua.Konexioa;
 import kontroladorea.Logger.nireLogerra;
-import leihoak.*;
+import leihoak.Leihoak;
+import leihoak.Menua;
 
 public class Nagusia {
 	public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);// logerraSortu
