@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import eredua.Departamentu;
 import eredua.Enplegatu;
+import eredua.Ezabaketak;
 import eredua.FitxategiakIrakurri;
 import eredua.Inportak;
 import eredua.Selekzioak;
@@ -48,6 +49,10 @@ public class Kontroladorea {
 			datuak[i][2]=departamentuenLista.get(i).getEraikuntza();
 		}
 		return datuak;
+	}
+	public static void  ezabatuDepartamentua(int departKod) {
+		System.out.println("ezabatutako departamentua: "+departKod);
+		Ezabaketak.ezabatuDepartamentua(departKod);
 	}
 	public static ArrayList<Enplegatu> lortuEnplegatuak() {
 		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();

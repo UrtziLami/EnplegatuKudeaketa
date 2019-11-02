@@ -10,11 +10,10 @@ public class Ezabaketak {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
-					"DELETE * FROM `departamentu` WHERE `DepartamentuKod` = " + deptKod);
+					"DELETE FROM `departamentu` WHERE `DepartamentuKod`= " + deptKod);
 			st.executeUpdate();
 			st.close();
 			System.out.println("Ezabatu da departamentua");
-			konexioa.close();
 		} catch (SQLException e) {
 			System.out.println("Ez da ezabatu departamentua");
 		}

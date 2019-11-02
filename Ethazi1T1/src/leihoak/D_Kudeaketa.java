@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import kontroladorea.Kontroladorea;
@@ -24,6 +25,7 @@ public class D_Kudeaketa extends JPanel {
 			return false;
 		}
 	};
+	private Object[][]datuak;
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
 	
@@ -71,19 +73,21 @@ public class D_Kudeaketa extends JPanel {
 		add(btnAzkena);
 		 
 		
-		
+		//*************taularen datuak 
 		taula.setBounds(30, 123, 446, 214);
 		add(taula);
 		
-		Object[][]datuak=Kontroladorea.lortuDepartamentuenDatuak();
+		
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
 		scrollPane.setBounds(30, 123, 446, 214);
 		add(scrollPane);
-		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
-		modelo = new DefaultTableModel(datuak, taulaBurua);
-		taula.setModel(modelo);
+		taularnBalioakBirkalkulatu();
+		taula.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		taula.getTableHeader().setResizingAllowed(false);
+		taula.getTableHeader().setReorderingAllowed(false);
 		
+		/* Taula amaiera*/
 		
 		lblIzena.setBounds(52, 31, 46, 14);
 		add(lblIzena);
@@ -114,6 +118,13 @@ public class D_Kudeaketa extends JPanel {
 		
 		btnAldatu.setBounds(361, 79, 89, 23);
 		add(btnAldatu);
+		btnKendu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int ezabatuDepartKod= (int) datuak[ taula.getSelectedRow()][0];
+				Kontroladorea.ezabatuDepartamentua(ezabatuDepartKod);
+				taularnBalioakBirkalkulatu();
+			}
+		});
 		
 		btnKendu.setBounds(361, 45, 89, 23);
 		add(btnKendu);
@@ -127,6 +138,12 @@ public class D_Kudeaketa extends JPanel {
 		add(btnAtzeraa);
 
 
+	}
+	private void taularnBalioakBirkalkulatu() {
+		datuak=Kontroladorea.lortuDepartamentuenDatuak();
+		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
+		modelo = new DefaultTableModel(datuak, taulaBurua);
+		taula.setModel(modelo);
 	}
 	private void aldatuLeihoMenua() {
 		Menua men = new Menua();
