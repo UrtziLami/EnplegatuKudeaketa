@@ -8,14 +8,22 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import kontroladorea.Kontroladorea;
 
 public class D_Kudeaketa extends JPanel {
 	
 	private JTable taula = new JTable();
+	private JScrollPane scrollPane;
+	private DefaultTableModel modelo = new DefaultTableModel() {
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		}
+	};
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
 	
@@ -62,8 +70,20 @@ public class D_Kudeaketa extends JPanel {
 		btnAzkena.setBounds(386, 359, 89, 23);
 		add(btnAzkena);
 		 
+		
+		
 		taula.setBounds(30, 123, 446, 214);
 		add(taula);
+		
+		Object[][]datuak=Kontroladorea.lortuDepartamentuenDatuak();
+		scrollPane = new JScrollPane(taula);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setBounds(30, 123, 446, 214);
+		add(scrollPane);
+		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
+		modelo = new DefaultTableModel(datuak, taulaBurua);
+		taula.setModel(modelo);
+		
 		
 		lblIzena.setBounds(52, 31, 46, 14);
 		add(lblIzena);

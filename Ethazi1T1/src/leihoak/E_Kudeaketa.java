@@ -31,7 +31,8 @@ public class E_Kudeaketa extends JPanel {
 	private JButton btnAtzera = new JButton("Atzera");
 
 	public E_Kudeaketa() {
-		
+		setLayout(null);
+		setBounds(150, 150, 520, 490);
 		taula = new JTable();
 		taula.setBounds(52, 65, 392, 235);
 		Object[][] datuak = Kontroladorea.lortuEnplegatuenDatuak();
@@ -40,11 +41,10 @@ public class E_Kudeaketa extends JPanel {
 		scrollPane.setViewportBorder(null);
 		scrollPane.setBounds(52, 65, 392, 235);
 		add(scrollPane);
-		String[] cabecera = new String[] { "ID", "Izen Abizena", "Departamentua", "soldata", "Ardura", "AltaData",
+		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "soldata", "Ardura", "AltaData",
 				"ZuzendariKodea", "Maila" };
-		modelo = new DefaultTableModel(datuak, cabecera);
-		setLayout(null);
-		setBounds(150, 150, 520, 490);
+		modelo = new DefaultTableModel(datuak, taulaBurua);
+	
 
 		
 		
