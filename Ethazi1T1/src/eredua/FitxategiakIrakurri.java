@@ -36,10 +36,10 @@ public class FitxategiakIrakurri {
 		JSONObject EnplegatuObjetua = (JSONObject) objetua.get("enplegatu");
 		JSONObject DepartamentuObjetua = (JSONObject) objetua.get("departamentu");
 		if (EnplegatuObjetua != null) {
-			int enpKod = (int) EnplegatuObjetua.get("enpKod");
-			int soldata = (int) EnplegatuObjetua.get("soldata");
-			int zuzendariKod = (int) EnplegatuObjetua.get("zuzendariKod");
-			int departKod = (int) EnplegatuObjetua.get("departKod");
+			int enpKod = 0;
+			int soldata = Integer.valueOf((String.valueOf(EnplegatuObjetua.get("soldata"))));
+			int zuzendariKod = Integer.valueOf((String.valueOf( EnplegatuObjetua.get("zuzendariKod"))));
+			int departKod = Integer.valueOf((String.valueOf( EnplegatuObjetua.get("departKod"))));
 
 			String AltaData = (String) EnplegatuObjetua.get("AltaData");
 			String IzenAbizena = (String) EnplegatuObjetua.get("IzenAbizena");
@@ -50,10 +50,10 @@ public class FitxategiakIrakurri {
 			objetuak.add(enplegatuBerria);
 		}
 		if (DepartamentuObjetua != null) {
-			String eraikuntza = (String) EnplegatuObjetua.get("eraikuntza");
-			String DepartIzena = (String) EnplegatuObjetua.get("DepartIzena");
-			int departKod = (int) EnplegatuObjetua.get("departKod");
-			Departamentu departamentuBerria = new Departamentu(departKod, eraikuntza, DepartIzena);
+			String eraikuntza = (String) DepartamentuObjetua.get("eraikuntza");
+			String DepartIzena = (String) DepartamentuObjetua.get("DepartIzena");
+			int departKod = 0;
+			Departamentu departamentuBerria = new Departamentu(departKod, DepartIzena,eraikuntza);
 			objetuak.add(departamentuBerria);
 		}
 

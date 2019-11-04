@@ -76,7 +76,7 @@ public class Menua extends JPanel {
 							}
 						} else if (fitx.getName().endsWith("json")) {
 							try {// meter el metodo para leer de un fichero json y meterlo en dok
-								Kontroladorea.fitxategitikIgo(fitx.getName(),"json");
+								Kontroladorea.fitxategitikIgo(fitx.getAbsolutePath(),"json");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}

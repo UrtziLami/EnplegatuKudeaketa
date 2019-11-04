@@ -18,8 +18,7 @@ public class Inportak {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
-					"INSERT INTO `enplegatu` (`IzenAbizena`, `DepartKod`, `Soldata`, `Ardura`, `AltaData`, `ZuzendariKod`, `Maila`)"
-							+ " VALUES(?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO `enplegatu` (`IzenAbizena`, `DepartKod`, `Soldata`, `Ardura`, `AltaData`, `ZuzendariKod`, `Maila`) VALUES(?,?,?,?,?,?,?)");
 			st.setString(1, enp.getIzenAbizena());
 			st.setInt(2, enp.getDepartKod());
 			st.setInt(3, enp.getSoldata());
@@ -30,7 +29,7 @@ public class Inportak {
 			st.executeUpdate();
 			st.close();
 			System.out.println("Gehitu da enplegatua");
-			konexioa.close();
+			
 		} catch (SQLException e) {
 			System.out.println("Ez da gehitu enplegatua");
 		}
@@ -40,14 +39,13 @@ public class Inportak {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
-					"INSERT INTO `departamentu` (`DepartIzena`, `Eraikuntza`)"
-							+ " VALUES(?, ?)");
+					"INSERT INTO `departamentu`( `DepartIzena`, `Eraikuntza`) VALUES (?,?)");
 			st.setString(1, dept.getDepartIzena());
 			st.setString(2, dept.getEraikuntza());
 			st.executeUpdate();
 			st.close();
 			System.out.println("Gehitu da departamentua");
-			konexioa.close();
+			
 		} catch (SQLException e) {
 			System.out.println("Ez da gehitu departamentua");
 		}
