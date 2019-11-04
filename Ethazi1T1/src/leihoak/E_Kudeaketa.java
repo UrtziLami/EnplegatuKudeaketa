@@ -2,7 +2,6 @@ package leihoak;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -10,7 +9,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import eredua.Enplegatu;
 import kontroladorea.Kontroladorea;
 
 public class E_Kudeaketa extends JPanel {
@@ -29,28 +27,19 @@ public class E_Kudeaketa extends JPanel {
 	private JButton btnHurrengoa = new JButton(">");
 	private JButton btnNewButton = new JButton(">>");
 	private JButton btnAtzera = new JButton("Atzera");
+	private Object[][] datuak;
 
 	public E_Kudeaketa() {
 		setLayout(null);
 		setBounds(150, 150, 520, 490);
 		taula = new JTable();
 		taula.setBounds(52, 65, 392, 235);
-		Object[][] datuak = Kontroladorea.lortuEnplegatuenDatuak();
-	
+
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
 		scrollPane.setBounds(52, 65, 392, 235);
 		add(scrollPane);
-		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "soldata", "Ardura", "AltaData",
-				"ZuzendariKodea", "Maila" };
-		modelo = new DefaultTableModel(datuak, taulaBurua);
-	
-
-		
-		
-		
-		taula.setModel(modelo);
-
+		taularenBaliokKalkulatu();
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				E_Eremuak emp = new E_Eremuak();
@@ -59,6 +48,15 @@ public class E_Kudeaketa extends JPanel {
 		});
 		btnGehitu.setBounds(52, 27, 89, 23);
 		add(btnGehitu);
+		
+		btnKendu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int ezabatuEnpleKod= (int)datuak[taula.getSelectedRow()][0];
+				System.out.println(ezabatuEnpleKod);
+				Kontroladorea.ezabatuEnplegatua(ezabatuEnpleKod);
+				taularenBaliokKalkulatu();
+			}
+		});
 
 		btnKendu.setBounds(208, 27, 89, 23);
 		add(btnKendu);
@@ -92,6 +90,15 @@ public class E_Kudeaketa extends JPanel {
 		btnAtzera.setBounds(214, 403, 89, 23);
 		add(btnAtzera);
 
+	}
+
+	private void taularenBaliokKalkulatu() {
+		Object[][] datuak = Kontroladorea.lortuEnplegatuenDatuak();
+		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "soldata", "Ardura", "AltaData",
+				"ZuzendariKodea", "Maila" };
+		modelo = new DefaultTableModel(datuak, taulaBurua);
+
+		taula.setModel(modelo);
 	}
 
 	private void aldatuLeihoMenua() {

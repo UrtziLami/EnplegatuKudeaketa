@@ -23,7 +23,7 @@ public class Ezabaketak {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
-					"DELETE * FROM `enplegatu` WHERE `EnplegatuKod` = " + enpKod);
+					"DELETE  FROM `enplegatu` WHERE `EnplegatuKod` = " + enpKod);
 			st.executeUpdate();
 			st.close();
 			System.out.println("Ezabatu da enplegatua");

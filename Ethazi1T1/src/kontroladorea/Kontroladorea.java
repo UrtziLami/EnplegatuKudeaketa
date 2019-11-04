@@ -54,6 +54,10 @@ public class Kontroladorea {
 		System.out.println("ezabatutako departamentua: "+departKod);
 		Ezabaketak.ezabatuDepartamentua(departKod);
 	}
+	public static void ezabatuEnplegatua(int enpleKod) {
+		System.out.println("ezabatutako enplegatua: "+enpleKod);
+		Ezabaketak.ezabatuEnplegatua(enpleKod);
+	}
 	public static ArrayList<Enplegatu> lortuEnplegatuak() {
 		ArrayList<Enplegatu> enplegatuenLista = new ArrayList<Enplegatu>();
 		enplegatuenLista = Selekzioak.ateraEnple();
