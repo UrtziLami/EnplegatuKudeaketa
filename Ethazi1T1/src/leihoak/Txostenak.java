@@ -23,7 +23,7 @@ public class Txostenak extends JPanel {
 	
 	public Txostenak() {
 		setLayout(null);
-		setBounds(150, 150, 520, 490);
+		setBounds(150, 150, 650, 490);
 		
 		btnEnpInprimatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -57,7 +57,7 @@ public class Txostenak extends JPanel {
 				}
 			}
 		});
-		btnEnpInprimatu.setBounds(103, 107, 297, 47);
+		btnEnpInprimatu.setBounds(196, 106, 297, 47);
 		add(btnEnpInprimatu);
 		
 		btnDepInprimatu.addActionListener(new ActionListener() {
@@ -92,7 +92,7 @@ public class Txostenak extends JPanel {
 				}
 			}
 		});
-		btnDepInprimatu.setBounds(103, 225, 297, 47);
+		btnDepInprimatu.setBounds(196, 228, 297, 47);
 		add(btnDepInprimatu);
 		
 		btnAtzera.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class Txostenak extends JPanel {
 				Menua men = new Menua();
 				Leihoak.aldatuLeihoa(men);			}
 		});
-		btnAtzera.setBounds(214, 403, 89, 23);
+		btnAtzera.setBounds(301, 396, 89, 23);
 		add(btnAtzera);
 
 	}

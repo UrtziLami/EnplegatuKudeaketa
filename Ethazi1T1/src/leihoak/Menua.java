@@ -27,7 +27,7 @@ public class Menua extends JPanel {
 
 	public Menua() {
 		setLayout(null);
-		setBounds(150, 150, 520, 490);
+		setBounds(150, 150, 650, 490);
 		
 		btnDepKudeaketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -35,7 +35,7 @@ public class Menua extends JPanel {
 				Leihoak.aldatuLeihoa(dep);
 			}
 		});
-		btnDepKudeaketa.setBounds(100, 66, 312, 61);
+		btnDepKudeaketa.setBounds(181, 66, 312, 61);
 		add(btnDepKudeaketa);
 		
 		btnEnpKudeaketa.addActionListener(new ActionListener() {
@@ -44,7 +44,7 @@ public class Menua extends JPanel {
 				Leihoak.aldatuLeihoa(emp);
 			}
 		});
-		btnEnpKudeaketa.setBounds(100, 151, 312, 61);
+		btnEnpKudeaketa.setBounds(181, 152, 312, 61);
 		add(btnEnpKudeaketa);
 		
 		btnTxostenakSortu.addActionListener(new ActionListener() {
@@ -53,7 +53,7 @@ public class Menua extends JPanel {
 				Leihoak.aldatuLeihoa(txos);
 			}
 		});
-		btnTxostenakSortu.setBounds(100, 324, 312, 61);
+		btnTxostenakSortu.setBounds(181, 322, 312, 61);
 		add(btnTxostenakSortu);
 		
 		
@@ -64,13 +64,13 @@ public class Menua extends JPanel {
 					if (fitx.canRead()) {
 						if (fitx.getName().endsWith("csv")) {
 							try {// meter el metodo para leer de un fichero csv y meterlo en dok
-								Kontroladorea.fitxategitikIgo(fitx.getName(),"csv");
+								Kontroladorea.fitxategitikIgo(fitx.getAbsolutePath(),"csv");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
 						} else if (fitx.getName().endsWith("xml")) {
 							try {// meter el metodo para leer de un fichero xml y meterlo en dok
-								Kontroladorea.fitxategitikIgo(fitx.getName(),"xml");
+								Kontroladorea.fitxategitikIgo(fitx.getAbsolutePath(),"xml");
 							} catch (Exception ex) {
 								System.out.println(ex.getMessage());
 							}
@@ -86,7 +86,7 @@ public class Menua extends JPanel {
 				}
 			}
 		});
-		btnErregisFitxategitik.setBounds(100, 238, 312, 61);
+		btnErregisFitxategitik.setBounds(181, 237, 312, 61);
 		add(btnErregisFitxategitik);
 
 	}

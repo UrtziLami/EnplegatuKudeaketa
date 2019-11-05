@@ -71,13 +71,13 @@ public class Kontroladorea {
 		int cont=0;
 		for (Enplegatu enplegatu : enplegatuenLista) {
 			datuak[cont][0]=enplegatu.getEnpKod();
-			datuak[cont][1]=enplegatu.getIzenAbizena();
+			datuak[cont][1]=enplegatu.getIzenAbizena().toLowerCase();
 			datuak[cont][2]=enplegatu.getDepartKod();
 			datuak[cont][3]=enplegatu.getSoldata();
-			datuak[cont][4]=enplegatu.getArdura();
+			datuak[cont][4]=enplegatu.getArdura().toLowerCase();
 			datuak[cont][5]=enplegatu.getAltaData();
 			datuak[cont][6]=enplegatu.getZuzendariKod();
-			datuak[cont][7]=enplegatu.getMaila();
+			datuak[cont][7]=enplegatu.getMaila().toLowerCase();
 			cont++;
 		}
 		return datuak;

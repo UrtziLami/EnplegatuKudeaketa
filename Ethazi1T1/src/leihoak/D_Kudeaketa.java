@@ -58,18 +58,18 @@ public class D_Kudeaketa extends JPanel {
 	
 	public D_Kudeaketa() {
 		setLayout(null);
-		setBounds(150, 150, 520, 488);
+		setBounds(150, 150, 650, 490);
 		
 		btnLehena.setBounds(30, 359, 89, 23);
 		add(btnLehena);
 		
-		btnAtzera.setBounds(149, 359, 89, 23);
+		btnAtzera.setBounds(195, 359, 89, 23);
 		add(btnAtzera);
 		
-		btnHurrengoa.setBounds(273, 359, 89, 23);
+		btnHurrengoa.setBounds(369, 359, 89, 23);
 		add(btnHurrengoa);
 		
-		btnAzkena.setBounds(386, 359, 89, 23);
+		btnAzkena.setBounds(536, 359, 89, 23);
 		add(btnAzkena);
 		 
 		
@@ -80,7 +80,7 @@ public class D_Kudeaketa extends JPanel {
 		
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(30, 123, 446, 214);
+		scrollPane.setBounds(30, 123, 595, 214);
 		add(scrollPane);
 		taularnBalioakBirkalkulatu();
 		taula.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -106,7 +106,7 @@ public class D_Kudeaketa extends JPanel {
 		txtFKokapena.addKeyListener(letrakBakarrik);
 		
 		
-		btnGehitu.setBounds(361, 11, 89, 23);
+		btnGehitu.setBounds(338, 56, 89, 23);
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				izena = txtFIzena.getText();
@@ -116,7 +116,7 @@ public class D_Kudeaketa extends JPanel {
 		});
 		add(btnGehitu);
 		
-		btnAldatu.setBounds(361, 79, 89, 23);
+		btnAldatu.setBounds(536, 56, 89, 23);
 		add(btnAldatu);
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -126,7 +126,7 @@ public class D_Kudeaketa extends JPanel {
 			}
 		});
 		
-		btnKendu.setBounds(361, 45, 89, 23);
+		btnKendu.setBounds(437, 56, 89, 23);
 		add(btnKendu);
 		
 		btnAtzeraa.addActionListener(new ActionListener() {
@@ -134,7 +134,7 @@ public class D_Kudeaketa extends JPanel {
 				aldatuLeihoMenua();
 			}
 		});
-		btnAtzeraa.setBounds(214, 403, 89, 23);
+		btnAtzeraa.setBounds(285, 403, 89, 23);
 		add(btnAtzeraa);
 
 

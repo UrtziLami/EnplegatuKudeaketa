@@ -8,11 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import kontroladorea.Kontroladorea;
 
 public class E_Kudeaketa extends JPanel {
 	private JTable taula;
+	private TableColumnModel columnModel;
+
 	private DefaultTableModel modelo = new DefaultTableModel() {
 		public boolean isCellEditable(int row, int column) {
 			return false;
@@ -31,13 +34,13 @@ public class E_Kudeaketa extends JPanel {
 
 	public E_Kudeaketa() {
 		setLayout(null);
-		setBounds(150, 150, 520, 490);
+		setBounds(150, 150, 650, 490);
 		taula = new JTable();
 		taula.setBounds(52, 65, 392, 235);
 
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(52, 65, 392, 235);
+		scrollPane.setBounds(23, 65, 605, 235);
 		add(scrollPane);
 		taularenBaliokKalkulatu();
 		btnGehitu.addActionListener(new ActionListener() {
@@ -58,7 +61,7 @@ public class E_Kudeaketa extends JPanel {
 			}
 		});
 
-		btnKendu.setBounds(208, 27, 89, 23);
+		btnKendu.setBounds(281, 27, 89, 23);
 		add(btnKendu);
 
 		btnAldatu.addActionListener(new ActionListener() {
@@ -67,19 +70,19 @@ public class E_Kudeaketa extends JPanel {
 				Leihoak.aldatuLeihoa(emp);
 			}
 		});
-		btnAldatu.setBounds(355, 27, 89, 23);
+		btnAldatu.setBounds(500, 27, 89, 23);
 		add(btnAldatu);
 
-		btnLehenengoa.setBounds(23, 342, 89, 23);
+		btnLehenengoa.setBounds(52, 342, 89, 23);
 		add(btnLehenengoa);
 
-		btnHurrengoa.setBounds(273, 342, 89, 23);
+		btnHurrengoa.setBounds(355, 342, 89, 23);
 		add(btnHurrengoa);
 
-		btnAztera.setBounds(144, 342, 89, 23);
+		btnAztera.setBounds(196, 342, 89, 23);
 		add(btnAztera);
 
-		btnNewButton.setBounds(394, 342, 89, 23);
+		btnNewButton.setBounds(514, 342, 89, 23);
 		add(btnNewButton);
 
 		btnAtzera.addActionListener(new ActionListener() {
@@ -87,18 +90,20 @@ public class E_Kudeaketa extends JPanel {
 				aldatuLeihoMenua();
 			}
 		});
-		btnAtzera.setBounds(214, 403, 89, 23);
+		btnAtzera.setBounds(281, 402, 89, 23);
 		add(btnAtzera);
 
 	}
 
 	private void taularenBaliokKalkulatu() {
 		Object[][] datuak = Kontroladorea.lortuEnplegatuenDatuak();
-		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "soldata", "Ardura", "AltaData",
+		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "Soldata", "Ardura", "AltaData",
 				"ZuzendariKodea", "Maila" };
 		modelo = new DefaultTableModel(datuak, taulaBurua);
-
 		taula.setModel(modelo);
+		columnModel = taula.getColumnModel();
+		columnModel.getColumn(0).setPreferredWidth(25);
+		columnModel.getColumn(1).setPreferredWidth(150);
 	}
 
 	private void aldatuLeihoMenua() {
