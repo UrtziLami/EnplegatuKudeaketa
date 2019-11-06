@@ -92,7 +92,7 @@ public class E_Eremuak extends JPanel {
 		txtfSoldata.setBounds(219, 152, 304, 20);
 		add(txtfSoldata);
 		txtfSoldata.setColumns(10);
-		txtfSoldata.addKeyListener(letrakBakarrik);
+		txtfSoldata.addKeyListener(zenbakiakBakarrik);
 
 		cmbxArdurak.setBounds(219, 204, 155, 20);
 		cmbxArdurak.addItem("Tutorea");

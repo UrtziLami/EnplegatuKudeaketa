@@ -57,7 +57,7 @@ public class Selekzioak {
 				altaData = (rs.getString("AltaData"));
 				zuzendariKod = (rs.getInt("ZuzendariKod"));
 				maila = (rs.getString("Maila"));
-				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod, altaData, izena, ardura, maila);
+				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod,izena, ardura, maila, altaData );
 				enpArray.add(enp);
 			}
 

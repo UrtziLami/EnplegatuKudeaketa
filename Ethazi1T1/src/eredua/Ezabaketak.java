@@ -27,7 +27,7 @@ public class Ezabaketak {
 			st.executeUpdate();
 			st.close();
 			System.out.println("Ezabatu da enplegatua");
-			konexioa.close();
+		
 		} catch (SQLException e) {
 			System.out.println("Ez da ezabatu enplegatua");
 		}

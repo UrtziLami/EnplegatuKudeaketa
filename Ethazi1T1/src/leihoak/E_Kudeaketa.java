@@ -51,11 +51,12 @@ public class E_Kudeaketa extends JPanel {
 		});
 		btnGehitu.setBounds(52, 27, 89, 23);
 		add(btnGehitu);
-		
+
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int ezabatuEnpleKod= (int)datuak[taula.getSelectedRow()][0];
-				System.out.println(ezabatuEnpleKod);
+				System.out.println(datuak[taula.getSelectedRow()][0]);
+				int ezabatuEnpleKod = (int) datuak[taula.getSelectedRow()][0];
+
 				Kontroladorea.ezabatuEnplegatua(ezabatuEnpleKod);
 				taularenBaliokKalkulatu();
 			}
@@ -96,7 +97,7 @@ public class E_Kudeaketa extends JPanel {
 	}
 
 	private void taularenBaliokKalkulatu() {
-		Object[][] datuak = Kontroladorea.lortuEnplegatuenDatuak();
+	 datuak = Kontroladorea.lortuEnplegatuenDatuak();
 		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "Soldata", "Ardura", "AltaData",
 				"ZuzendariKodea", "Maila" };
 		modelo = new DefaultTableModel(datuak, taulaBurua);
