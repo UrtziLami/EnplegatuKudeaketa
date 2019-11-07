@@ -1,9 +1,9 @@
-package CSVObjetuak;
+package eredua;
 import java.sql.Date;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class CSVenplegatua {
+public class CSVobjetua {
 	 	@CsvBindByName(column = "IzenAbizena")
 	    private String IzenAbizena;
 	    @CsvBindByName(column = "soldata")
@@ -18,8 +18,26 @@ public class CSVenplegatua {
 	    private int departKod; 
 	    @CsvBindByName(column = "zuzendariKod")
 	    private String zuzendariKod;
+	    @CsvBindByName(column = "eraikuntza")
+	    private String eraikuntza;
+	    @CsvBindByName(column = "DepartIzena")
+	    private String DepartIzena;
 	    
+		
 	    /******Getters and Setters*******/
+	    public String getEraikuntza() {
+			return eraikuntza;
+		}
+		public String getDepartIzena() {
+			return DepartIzena;
+		}
+		public void setEraikuntza(String eraikuntza) {
+			this.eraikuntza = eraikuntza;
+		}
+		public void setDepartIzena(String departIzena) {
+			DepartIzena = departIzena;
+		}
+	    /************************************/
 		public String getIzenAbizena() {
 			return IzenAbizena;
 		}
