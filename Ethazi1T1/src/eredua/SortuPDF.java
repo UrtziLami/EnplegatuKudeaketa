@@ -20,6 +20,8 @@ public class SortuPDF {
 	private static final Font subcategoryFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
 	private static final Font blueFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
 	private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+	private static final Font letraTxikia = new Font(Font.FontFamily.TIMES_ROMAN, 8, Font.NORMAL);
+	
 
 	private static ArrayList<Departamentu> deptak = new ArrayList<>();
 	private static ArrayList<Enplegatu> enpak = new ArrayList<>();
@@ -65,41 +67,41 @@ public class SortuPDF {
 			// Ahora llenamos la tabla del PDF
 			PdfPCell columnHeaderEnp;
 			// Rellenamos las Columnas de la tabla.
-			columnHeaderEnp = new PdfPCell(new Phrase("EnplegatuKod"));
+			columnHeaderEnp = new PdfPCell(new Phrase("EnplegatuKod",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("IzenAbizena"));
+			columnHeaderEnp = new PdfPCell(new Phrase("IzenAbizena",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("DepartKod"));
+			columnHeaderEnp = new PdfPCell(new Phrase("DepartKod",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("Soldata"));
+			columnHeaderEnp = new PdfPCell(new Phrase("Soldata",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("Ardura"));
+			columnHeaderEnp = new PdfPCell(new Phrase("Ardura",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("AltaData"));
+			columnHeaderEnp = new PdfPCell(new Phrase("AltaData",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("ZuzendariKod"));
+			columnHeaderEnp = new PdfPCell(new Phrase("ZuzendariKod",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			columnHeaderEnp = new PdfPCell(new Phrase("Maila"));
+			columnHeaderEnp = new PdfPCell(new Phrase("Maila",smallBold));
 			columnHeaderEnp.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tableEnp.addCell(columnHeaderEnp);
-			tableEnp.setHeaderRows(enpKont);
+			tableEnp.setHeaderRows(1);
 			// Rellenamos las filas de la tabla.
 			for (Enplegatu enp : enpak) {
-				tableEnp.addCell(String.valueOf(enp.getEnpKod()));
-				tableEnp.addCell(enp.getIzenAbizena());
-				tableEnp.addCell(String.valueOf(enp.getDepartKod()));
-				tableEnp.addCell(String.valueOf(enp.getSoldata()));
-				tableEnp.addCell(enp.getArdura());
-				tableEnp.addCell(enp.getAltaData());
-				tableEnp.addCell(String.valueOf(enp.getZuzendariKod()));
-				tableEnp.addCell(enp.getMaila());
+				tableEnp.addCell(new Phrase(String.valueOf(enp.getEnpKod()),letraTxikia));
+				tableEnp.addCell(new Phrase(enp.getIzenAbizena(),letraTxikia));
+				tableEnp.addCell(new Phrase(String.valueOf(enp.getDepartKod()),letraTxikia));
+				tableEnp.addCell(new Phrase(String.valueOf(enp.getSoldata()),letraTxikia));
+				tableEnp.addCell(new Phrase(enp.getArdura(),letraTxikia));
+				tableEnp.addCell(new Phrase(enp.getAltaData(),letraTxikia));
+				tableEnp.addCell(new Phrase(String.valueOf(enp.getZuzendariKod()),letraTxikia));
+				tableEnp.addCell(new Phrase(enp.getMaila(),letraTxikia));
 			}
 			// Añadimos la tabla
 			chapEnp.add(tableEnp);
