@@ -1,5 +1,6 @@
 package kontroladorea;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import eredua.Aldaketak;
@@ -9,6 +10,7 @@ import eredua.Ezabaketak;
 import eredua.FitxategiakIrakurri;
 import eredua.Inportak;
 import eredua.Selekzioak;
+import eredua.SortuPDF;
 
 public class Kontroladorea {
 
@@ -89,6 +91,9 @@ public class Kontroladorea {
 		return datuak;
 	}
 	
+	public static void pdfSortu(String path) {
+		SortuPDF.createPDF(new File(path));
+	}
 
 	public static ArrayList<Integer> lortuZuzendariKod() {
 		ArrayList<Integer> kodeak = new ArrayList<Integer>();
