@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,13 +21,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-
-import CSVObjetuak.CSVdepartamentu;
-import CSVObjetuak.CSVenplegatua;
-import kontroladorea.Nagusia;
 
 public class FitxategiakIrakurri {
 
@@ -38,8 +32,8 @@ public class FitxategiakIrakurri {
 		if (EnplegatuObjetua != null) {
 			int enpKod = 0;
 			int soldata = Integer.valueOf((String.valueOf(EnplegatuObjetua.get("soldata"))));
-			int zuzendariKod = Integer.valueOf((String.valueOf( EnplegatuObjetua.get("zuzendariKod"))));
-			int departKod = Integer.valueOf((String.valueOf( EnplegatuObjetua.get("departKod"))));
+			int zuzendariKod = Integer.valueOf((String.valueOf(EnplegatuObjetua.get("zuzendariKod"))));
+			int departKod = Integer.valueOf((String.valueOf(EnplegatuObjetua.get("departKod"))));
 
 			String AltaData = (String) EnplegatuObjetua.get("AltaData");
 			String IzenAbizena = (String) EnplegatuObjetua.get("IzenAbizena");
@@ -53,7 +47,7 @@ public class FitxategiakIrakurri {
 			String eraikuntza = (String) DepartamentuObjetua.get("eraikuntza");
 			String DepartIzena = (String) DepartamentuObjetua.get("DepartIzena");
 			int departKod = 0;
-			Departamentu departamentuBerria = new Departamentu(departKod, DepartIzena,eraikuntza);
+			Departamentu departamentuBerria = new Departamentu(departKod, DepartIzena, eraikuntza);
 			objetuak.add(departamentuBerria);
 		}
 
@@ -106,28 +100,29 @@ public class FitxategiakIrakurri {
 	public static ArrayList<Object> irakurriFitzategiaCSV(String ruta) {
 		ArrayList<Object> objetuenLista = new ArrayList<Object>();
 		try (Reader reader = Files.newBufferedReader(Paths.get(ruta));) {
-			CsvToBean<CSVenplegatua> csvToBean = new CsvToBeanBuilder(reader).withType(CSVenplegatua.class).withIgnoreLeadingWhiteSpace(true).build();
-			
-			CsvToBean<CSVdepartamentu> csvToBean2 = new CsvToBeanBuilder(reader).withType(CSVdepartamentu.class).withIgnoreLeadingWhiteSpace(true).build();
+			CsvToBean<CSVobjetua> csvToBean = new CsvToBeanBuilder<CSVobjetua>(reader).withType(CSVobjetua.class)
+					.withIgnoreLeadingWhiteSpace(true).build();
 
-			Iterator<CSVenplegatua> csvUserIterator = csvToBean.iterator();
-			Enplegatu enplegatuBerria = new Enplegatu();
-			Departamentu departamentuBerria = new Departamentu();
+			Iterator<CSVobjetua> csvUserIterator = csvToBean.iterator();
+		
 			while (csvUserIterator.hasNext()) {
-				CSVenplegatua csvEnplegatua = csvUserIterator.next();
-				enplegatuBerria.setIzenAbizena(csvEnplegatua.getIzenAbizena());
-				enplegatuBerria.setSoldata(csvEnplegatua.getSoldata());
-				enplegatuBerria.setAltaData(csvEnplegatua.getAltaData());
-				enplegatuBerria.setMaila(csvEnplegatua.getMaila());
-				enplegatuBerria.setDepartKod(csvEnplegatua.getDepartKod());
+				CSVobjetua csvObjetua = csvUserIterator.next();
+				if (csvObjetua.getDepartIzena() != null) {
+					Departamentu departamentuBerria = new Departamentu();
+					departamentuBerria.setEraikuntza(csvObjetua.getEraikuntza());
+					departamentuBerria.setDepartIzena(csvObjetua.getDepartIzena());
+					objetuenLista.add(departamentuBerria);
+				} else if (csvObjetua.getIzenAbizena() != null) {
+					Enplegatu enplegatuBerria = new Enplegatu();
+					enplegatuBerria.setIzenAbizena(csvObjetua.getIzenAbizena());
+					enplegatuBerria.setSoldata(csvObjetua.getSoldata());
+					enplegatuBerria.setAltaData(csvObjetua.getAltaData());
+					enplegatuBerria.setMaila(csvObjetua.getMaila());
+					enplegatuBerria.setDepartKod(csvObjetua.getDepartKod());
+					objetuenLista.add(enplegatuBerria);
+				}
 			}
-			Iterator<CSVdepartamentu> csvUserIterator1 = csvToBean2.iterator();
-			while (csvUserIterator1.hasNext()) {
-				CSVdepartamentu csvDepartamentu = csvUserIterator1.next();
-				departamentuBerria.setEraikuntza(csvDepartamentu.getEraikuntza());
-				departamentuBerria.setDepartIzena(csvDepartamentu.getDepartIzena());
 
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

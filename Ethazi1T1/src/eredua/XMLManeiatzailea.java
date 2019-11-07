@@ -13,7 +13,7 @@ public class XMLManeiatzailea extends DefaultHandler {
 	private String balioa = null;
 	private Enplegatu enplegatu;
 	private Departamentu departamentu;
-	
+
 	private ArrayList<Object> ObjetuLista;
 
 	public XMLManeiatzailea(ArrayList<Object> objetuak) {
@@ -29,7 +29,7 @@ public class XMLManeiatzailea extends DefaultHandler {
 		// Elentua <liburua> bada isbn atributua irakurriko dugu
 		if (localName.equals("enplegatu")) {
 			enplegatu = new Enplegatu();
-		}else if (localName.equals("departamentu")) {
+		} else if (localName.equals("departamentu")) {
 			departamentu = new Departamentu();
 		}
 	}
@@ -51,13 +51,7 @@ public class XMLManeiatzailea extends DefaultHandler {
 		case "soldata":
 			enplegatu.setSoldata(Integer.parseInt(balioa));
 			break;
-		case "AltaData":
-			try {
-				enplegatu.setAltaData(new SimpleDateFormat("yyyy/MM/dd").parse(balioa).toString());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			break;
+		
 		case "IzenAbizena":
 			enplegatu.setIzenAbizena(balioa);
 			break;
@@ -76,7 +70,7 @@ public class XMLManeiatzailea extends DefaultHandler {
 		case "departKod":
 			enplegatu.setDepartKod(Integer.parseInt(balioa));
 			departamentu.setDepartKod(Integer.parseInt(balioa));
-			break;	
+			break;
 		case "enplegatu":
 			ObjetuLista.add(enplegatu);
 			break;
