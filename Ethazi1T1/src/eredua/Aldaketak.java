@@ -30,8 +30,8 @@ public class Aldaketak {
 	public static void departamentuAldatu(Departamentu dept) {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
-			PreparedStatement st = konexioa
-					.prepareStatement("UPDATE `enplegatu` SET `DepartamentuIzena` = ?, `Eraikuntza` = ? WHERE `departamentua`.`DepartamentuKod` = ?");
+			PreparedStatement st = konexioa.prepareStatement(
+					"UPDATE `departamentu` SET `DepartIzena`= ? ,`Eraikuntza`=? WHERE `DepartamentuKod`= ? ");
 			st.setString(1, dept.getDepartIzena());
 			st.setString(2, dept.getEraikuntza());
 			st.setInt(3, dept.getDepartKod());

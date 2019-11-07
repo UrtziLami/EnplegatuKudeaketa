@@ -1,8 +1,8 @@
 package kontroladorea;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
+import eredua.Aldaketak;
 import eredua.Departamentu;
 import eredua.Enplegatu;
 import eredua.Ezabaketak;
@@ -32,6 +32,12 @@ public class Kontroladorea {
 				Inportak.erregistratuDepartamentuak((Departamentu) object);
 			}
 		}
+	}
+	public static void aldatuDepartamentua(int departamentuKodea, String izenBerria, String eraikuntzaBerria ) {
+		izenBerria=izenBerria.toUpperCase();
+		eraikuntzaBerria=eraikuntzaBerria.toUpperCase();
+		Departamentu departamentuBerria= new Departamentu(departamentuKodea,izenBerria,eraikuntzaBerria);
+		Aldaketak.departamentuAldatu(departamentuBerria);
 	}
 
 	public static ArrayList<Departamentu> lortuDepartamentuak() {

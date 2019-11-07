@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import kontroladorea.Kontroladorea;
 
 public class D_Kudeaketa extends JPanel {
-	
+
 	private JTable taula = new JTable();
 	private JScrollPane scrollPane;
 	private DefaultTableModel modelo = new DefaultTableModel() {
@@ -25,12 +25,12 @@ public class D_Kudeaketa extends JPanel {
 			return false;
 		}
 	};
-	private Object[][]datuak;
+	private Object[][] datuak;
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
-	
+
 	private String izena, kokapena;
-	
+
 	private JButton btnLehena = new JButton("<<");
 	private JButton btnAtzera = new JButton("<");
 	private JButton btnHurrengoa = new JButton(">");
@@ -39,45 +39,38 @@ public class D_Kudeaketa extends JPanel {
 	private JButton btnAldatu = new JButton("Aldatu");
 	private JButton btnKendu = new JButton("Kendu");
 	private JButton btnAtzeraa = new JButton("Atzera");
-	
+
 	private JLabel lblIzena = new JLabel("Izena:");
 	private JLabel lblKokapena = new JLabel("Kokapena:");
-	private KeyAdapter letrakBakarrik= new KeyAdapter()
-	{
-		   public void keyTyped(KeyEvent e)
-		   {
-		      char caracter = e.getKeyChar();
-		      if(((caracter < 'A') ||
-		         (caracter > 'z')) &&
-		         (caracter != ' ' ))
-		      {
-		         e.consume(); 
-		      }
-		   }
-		};
-	
+	private KeyAdapter letrakBakarrik = new KeyAdapter() {
+		public void keyTyped(KeyEvent e) {
+			char caracter = e.getKeyChar();
+			if (((caracter < 'A') || (caracter > 'z')) && (caracter != ' ')) {
+				e.consume();
+			}
+		}
+	};
+
 	public D_Kudeaketa() {
 		setLayout(null);
 		setBounds(150, 150, 650, 490);
-		
+
 		btnLehena.setBounds(30, 359, 89, 23);
 		add(btnLehena);
-		
+
 		btnAtzera.setBounds(195, 359, 89, 23);
 		add(btnAtzera);
-		
+
 		btnHurrengoa.setBounds(369, 359, 89, 23);
 		add(btnHurrengoa);
-		
+
 		btnAzkena.setBounds(536, 359, 89, 23);
 		add(btnAzkena);
-		 
-		
-		//*************taularen datuak 
+
+		// *************taularen datuak
 		taula.setBounds(30, 123, 446, 214);
 		add(taula);
-		
-		
+
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
 		scrollPane.setBounds(30, 123, 595, 214);
@@ -86,49 +79,59 @@ public class D_Kudeaketa extends JPanel {
 		taula.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		taula.getTableHeader().setResizingAllowed(false);
 		taula.getTableHeader().setReorderingAllowed(false);
-		
-		/* Taula amaiera*/
-		
+
+		/* Taula amaiera */
+
 		lblIzena.setBounds(52, 31, 46, 14);
 		add(lblIzena);
-		
+
 		txtFIzena.setBounds(125, 28, 170, 20);
 		add(txtFIzena);
 		txtFIzena.setColumns(10);
 		txtFIzena.addKeyListener(letrakBakarrik);
-		
+
 		lblKokapena.setBounds(52, 78, 67, 14);
 		add(lblKokapena);
-		
+
 		txtFKokapena.setBounds(125, 75, 170, 20);
 		add(txtFKokapena);
 		txtFKokapena.setColumns(10);
 		txtFKokapena.addKeyListener(letrakBakarrik);
-		
-		
+
 		btnGehitu.setBounds(338, 56, 89, 23);
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				izena = txtFIzena.getText();
 				kokapena = txtFKokapena.getText();
 				Kontroladorea.sartuDept(izena, kokapena);
+				taularnBalioakBirkalkulatu();
 			}
 		});
 		add(btnGehitu);
-		
+		btnAldatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int aldatuDepartKod = (int) datuak[taula.getSelectedRow()][0];
+				String izenBerria = txtFIzena.getText();
+				String eraikuntzaBerria = txtFKokapena.getText();
+				
+				Kontroladorea.aldatuDepartamentua(aldatuDepartKod,izenBerria,eraikuntzaBerria);
+				taularnBalioakBirkalkulatu();
+			}
+		});
+
 		btnAldatu.setBounds(536, 56, 89, 23);
 		add(btnAldatu);
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int ezabatuDepartKod= (int) datuak[ taula.getSelectedRow()][0];
+				int ezabatuDepartKod = (int) datuak[taula.getSelectedRow()][0];
 				Kontroladorea.ezabatuDepartamentua(ezabatuDepartKod);
 				taularnBalioakBirkalkulatu();
 			}
 		});
-		
+
 		btnKendu.setBounds(437, 56, 89, 23);
 		add(btnKendu);
-		
+
 		btnAtzeraa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aldatuLeihoMenua();
@@ -137,17 +140,18 @@ public class D_Kudeaketa extends JPanel {
 		btnAtzeraa.setBounds(285, 403, 89, 23);
 		add(btnAtzeraa);
 
-
 	}
+
 	private void taularnBalioakBirkalkulatu() {
-		datuak=Kontroladorea.lortuDepartamentuenDatuak();
+		datuak = Kontroladorea.lortuDepartamentuenDatuak();
 		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
 		modelo = new DefaultTableModel(datuak, taulaBurua);
 		taula.setModel(modelo);
 	}
+
 	private void aldatuLeihoMenua() {
 		Menua men = new Menua();
 		Leihoak.aldatuLeihoa(men);
 	}
-	
+
 }
