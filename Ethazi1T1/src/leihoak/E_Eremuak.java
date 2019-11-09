@@ -166,7 +166,6 @@ public class E_Eremuak extends JPanel {
 		add(lblZuzendariKodea);
 
 		cmbxZuzKod.setBounds(219, 299, 155, 20);
-		cmbxZuzKod.setEnabled(false);
 		zuzKod = Kontroladorea.lortuZuzendariKod();
 		for (int i = 0; i < zuzKod.size(); i++) {
 			cmbxZuzKod.addItem(zuzKod.get(i));

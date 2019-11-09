@@ -100,7 +100,9 @@ public class Kontroladorea {
 		ArrayList<Enplegatu> enpak = new ArrayList<Enplegatu>();
 		enpak = lortuEnplegatuak();
 		for (int i = 0; i < enpak.size(); i++) {
-			kodeak.add(enpak.get(i).getZuzendariKod());
+			if(enpak.get(i).getMaila().equals("ZUZENDARU NAGUSI")||enpak.get(i).getMaila().equals("IKASKETA BURUA")||enpak.get(i).getMaila().equals("ZUZENDARI ORDEA")) {
+				kodeak.add(enpak.get(i).getEnpKod());
+			}
 		}
 		return kodeak;
 	}
