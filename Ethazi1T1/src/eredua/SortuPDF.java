@@ -38,7 +38,7 @@ public class SortuPDF {
 		// We create the document and set the file name.
 		// Creamos el documento e indicamos el nombre del fichero.
 		try {
-			Document document = new Document();
+			Document document = new Document(PageSize.A4.rotate());
 			try {
 				PdfWriter.getInstance(document, new FileOutputStream(pdfNewFile));
 			} catch (FileNotFoundException fileNotFoundException) {
@@ -95,13 +95,13 @@ public class SortuPDF {
 			// Rellenamos las filas de la tabla.
 			for (Enplegatu enp : enpak) {
 				tableEnp.addCell(new Phrase(String.valueOf(enp.getEnpKod()),letraTxikia));
-				tableEnp.addCell(new Phrase(enp.getIzenAbizena(),letraTxikia));
+				tableEnp.addCell(new Phrase(lehenengoaMayus(enp.getIzenAbizena()),letraTxikia));
 				tableEnp.addCell(new Phrase(String.valueOf(enp.getDepartKod()),letraTxikia));
 				tableEnp.addCell(new Phrase(String.valueOf(enp.getSoldata()),letraTxikia));
-				tableEnp.addCell(new Phrase(enp.getArdura(),letraTxikia));
-				tableEnp.addCell(new Phrase(enp.getAltaData(),letraTxikia));
+				tableEnp.addCell(new Phrase(lehenengoaMayus(enp.getArdura()),letraTxikia));
+				tableEnp.addCell(new Phrase(lehenengoaMayus(enp.getAltaData()),letraTxikia));
 				tableEnp.addCell(new Phrase(String.valueOf(enp.getZuzendariKod()),letraTxikia));
-				tableEnp.addCell(new Phrase(enp.getMaila(),letraTxikia));
+				tableEnp.addCell(new Phrase(lehenengoaMayus(enp.getMaila()),letraTxikia));
 			}
 			// Añadimos la tabla
 			chapEnp.add(tableEnp);
@@ -133,9 +133,9 @@ public class SortuPDF {
 			table.setHeaderRows(deptKont);
 			// Rellenamos las filas de la tabla.
 			for (Departamentu dept : deptak) {
-				table.addCell(String.valueOf(dept.getDepartKod()));
-				table.addCell(dept.getDepartIzena());
-				table.addCell(dept.getEraikuntza());
+				table.addCell(new Phrase(String.valueOf(dept.getDepartKod()),letraTxikia));
+				table.addCell(new Phrase(lehenengoaMayus(dept.getDepartIzena()),letraTxikia));
+				table.addCell(new Phrase(lehenengoaMayus(dept.getEraikuntza()),letraTxikia));
 			}
 			// Añadimos la tabla
 			chapDept.add(table);
@@ -149,4 +149,28 @@ public class SortuPDF {
 		}
 
 	}
+	
+	
+	private static String lehenengoaMayus (String sarreraStrig) {
+		String s =sarreraStrig;
+		 if ((s == null) || (s.trim().length() == 0)) {
+		       return s;
+		    }
+		    s = s.toLowerCase();
+		    char[] cArr = s.trim().toCharArray();
+		    cArr[0] = Character.toUpperCase(cArr[0]);
+		    for (int i = 0; i < cArr.length; i++) {
+		       if (cArr[i] == ' ' && (i + 1) < cArr.length) {
+		         cArr[i + 1] = Character.toUpperCase(cArr[i + 1]);
+		       }
+		       if (cArr[i] == '-' && (i + 1) < cArr.length) {
+		         cArr[i + 1] = Character.toUpperCase(cArr[i + 1]);
+		       }
+		       if (cArr[i] == '\'' && (i + 1) < cArr.length) {
+		         cArr[i + 1] = Character.toUpperCase(cArr[i + 1]);
+		       }
+		    }
+		    return new String(cArr);
+	}
+	
 }
