@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import kontroladorea.Nagusia;
+
 public class Aldaketak {
 
 	public static void enplegatuAldatu(Enplegatu enp) {
@@ -23,6 +25,7 @@ public class Aldaketak {
 			st.close();
 			System.out.println("Aldatu da enplegatua");
 		} catch (SQLException e) {
+			Nagusia.LOGGER.severe("EZ DA ALDATU ENPLEGATUA");
 			System.out.println("Ez da aldatu enplegatua");
 		}
 	}
@@ -40,6 +43,7 @@ public class Aldaketak {
 			st.close();
 			System.out.println("Aldatu da departamentua");
 		} catch (SQLException e) {
+			Nagusia.LOGGER.severe("EZ DA ALDATU DEPARTAMENTUA");
 			System.out.println("Ez da aldatu departamentua");
 		}
 	}

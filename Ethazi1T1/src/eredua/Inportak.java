@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import kontroladorea.Nagusia;
+
 public class Inportak {
 
 	public static void erregistratuEnplegatuak(Enplegatu enp) {
@@ -31,6 +33,7 @@ public class Inportak {
 			System.out.println("Gehitu da enplegatua");
 			
 		} catch (SQLException e) {
+			Nagusia.LOGGER.severe("EZ DA GEHITU ENPLEGATUA");
 			System.out.println("Ez da gehitu enplegatua");
 		}
 	}
@@ -47,6 +50,7 @@ public class Inportak {
 			System.out.println("Gehitu da departamentua");
 			
 		} catch (SQLException e) {
+			Nagusia.LOGGER.severe("EZ DA GEHITU DEPARTAMENTUA");
 			System.out.println("Ez da gehitu departamentua");
 		}
 		

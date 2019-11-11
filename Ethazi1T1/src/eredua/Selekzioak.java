@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import kontroladorea.Nagusia;
+
 /**
  * 
  * @author Aitor datu basetik selekzioak egiteko
@@ -33,6 +35,7 @@ public class Selekzioak {
 			}
 
 		} catch (Exception e) {
+			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
 			System.out.println(e.getMessage());
 		}
 		return deptArray;
@@ -62,6 +65,7 @@ public class Selekzioak {
 			}
 
 		} catch (Exception e) {
+			Nagusia.LOGGER.severe("EZ DIRA AURKITU ENPLEGATUAK");
 			System.out.println(e.getMessage());
 		}
 		return enpArray;

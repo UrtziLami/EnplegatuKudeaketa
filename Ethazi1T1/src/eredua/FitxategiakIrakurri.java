@@ -24,6 +24,8 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import kontroladorea.Nagusia;
+
 public class FitxategiakIrakurri {
 
 	private static void stringakArrayListeanSartu(JSONObject objetua, ArrayList<Object> objetuak) {
@@ -68,10 +70,13 @@ public class FitxategiakIrakurri {
 			employeeList.forEach(obje -> stringakArrayListeanSartu((JSONObject) obje, objetuak));
 
 		} catch (FileNotFoundException e) {
+			Nagusia.LOGGER.severe("JSON FITXATEGIA EZ DA AURKITU");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (IOException e) {
+			Nagusia.LOGGER.severe("JSON FITXATEGIA TXARTO DAGO");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ParseException e) {
+			Nagusia.LOGGER.severe("JSON FITXATEGI EZ BATERAGARRIA");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return objetuak;
@@ -89,8 +94,10 @@ public class FitxategiakIrakurri {
 			// Badaukagu kargatuta liburuak eta orain inprimatuko ditugu
 
 		} catch (SAXException e) {
+			Nagusia.LOGGER.severe("SAX EXZEPZIOA");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (IOException e) {
+			Nagusia.LOGGER.severe("XML FITXATEGIA TXARTO DAGO");
 			e.printStackTrace();
 		}
 		System.out.println();
@@ -124,6 +131,7 @@ public class FitxategiakIrakurri {
 			}
 
 		} catch (IOException e) {
+			Nagusia.LOGGER.severe("XML FITXATEGIA TXARTO DAGO");
 			e.printStackTrace();
 		}
 		return objetuenLista;

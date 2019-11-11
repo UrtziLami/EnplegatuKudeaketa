@@ -16,6 +16,7 @@ public class Nagusia {
 			nireLogerra.setup();
 		} catch (IOException e) {
 			e.printStackTrace();
+			Nagusia.LOGGER.severe("ERROREA LOG FITXATEGIA SORTZERAKOAN");
 			throw new RuntimeException("arasoak log fitxastegiak sortzeko");
 		}
 

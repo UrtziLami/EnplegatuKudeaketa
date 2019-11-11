@@ -4,6 +4,8 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.*;
 
+import kontroladorea.Nagusia;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -42,6 +44,7 @@ public class SortuPDF {
 			try {
 				PdfWriter.getInstance(document, new FileOutputStream(pdfNewFile));
 			} catch (FileNotFoundException fileNotFoundException) {
+				Nagusia.LOGGER.severe("EZ DA AURKITU PDF-A, FITXATEGIA SORTZEKO");
 				System.out.println("No se encontró el fichero para generar el pdf" + fileNotFoundException);
 			}
 			document.open();
@@ -144,6 +147,7 @@ public class SortuPDF {
 			document.close();
 			System.out.println("Se ha generado tu hoja PDF!");
 		} catch (DocumentException documentException) {
+			Nagusia.LOGGER.severe("EZ DA AURKITU PDF FITXATEGIA");
 			System.out.println(
 					"The file not exists (Se ha producido un error al generar un documento): " + documentException);
 		}
