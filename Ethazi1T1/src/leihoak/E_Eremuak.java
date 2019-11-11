@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import eredua.Departamentu;
 import kontroladorea.Kontroladorea;
+import kontroladorea.Nagusia;
 
 public class E_Eremuak extends JPanel {
 	private JTextField txtfIzenAbizenak = new JTextField();
@@ -30,10 +32,10 @@ public class E_Eremuak extends JPanel {
 	private JLabel lblMaila = new JLabel("Maila:");
 	private JLabel lblZuzendariKodea = new JLabel("Zuzendari Kodea:");
 
-	private JComboBox cmbxDepartamentuak = new JComboBox();
-	private JComboBox cmbxArdurak = new JComboBox();
-	private JComboBox cmbxMailak = new JComboBox();
-	private JComboBox cmbxZuzKod = new JComboBox();
+	private JComboBox<String> cmbxDepartamentuak = new JComboBox<String>();
+	private JComboBox<String> cmbxArdurak = new JComboBox<String>();
+	private JComboBox<String> cmbxMailak = new JComboBox<String>();
+	private JComboBox<Integer> cmbxZuzKod = new JComboBox<Integer>();
 
 	private ArrayList<Departamentu> deptak = new ArrayList<Departamentu>();
 	private ArrayList<Integer> zuzKod = new ArrayList<Integer>();
@@ -143,10 +145,14 @@ public class E_Eremuak extends JPanel {
 
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(txtfSoldata.getText().length()>0 && txtfIzenAbizenak.getText().length()>0) {
+					soldata = Integer.parseInt(txtfSoldata.getText());
+					izenAbizena = txtfIzenAbizenak.getText();
 				Departamentu dept = deptak.get(cmbxDepartamentuak.getSelectedIndex());
 				depart = dept.getDepartKod();
-				soldata = Integer.parseInt(txtfSoldata.getText());
-				izenAbizena = txtfIzenAbizenak.getText();
+				
+				
 				ardura = (String) cmbxArdurak.getSelectedItem();
 				if (cmbxMailak.isEnabled()) {
 					maila = (String) cmbxMailak.getSelectedItem();
@@ -154,9 +160,15 @@ public class E_Eremuak extends JPanel {
 					maila = "SOILA";
 				if (cmbxZuzKod.isEnabled()) {
 					zuzendariKod = (int) cmbxZuzKod.getSelectedItem();
-				}else
+				}else {
 					zuzendariKod = 0;
+				}
 				Kontroladorea.sartuEnp(depart, soldata, zuzendariKod, izenAbizena, ardura, maila);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "ez dira datuak sartu enplegatua sortzeko" );
+					Nagusia.LOGGER.severe("ez dira datuak sartu enplegatua sortzeko");
+				}
 			}
 		});
 		btnGehitu.setBounds(285, 351, 89, 23);

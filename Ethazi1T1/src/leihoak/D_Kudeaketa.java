@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,6 +16,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import kontroladorea.Kontroladorea;
+import kontroladorea.Nagusia;
 
 public class D_Kudeaketa extends JPanel {
 
@@ -97,22 +99,31 @@ public class D_Kudeaketa extends JPanel {
 		btnGehitu.setBounds(338, 56, 89, 23);
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				izena = txtFIzena.getText();
-				kokapena = txtFKokapena.getText();
-				Kontroladorea.sartuDept(izena, kokapena);
-				taularnBalioakBirkalkulatu();
+				if (txtFIzena.getText().length() > 0 && txtFKokapena.getText().length() > 0) {
+					izena = txtFIzena.getText();
+					kokapena = txtFKokapena.getText();
+					Kontroladorea.sartuDept(izena, kokapena);
+					taularnBalioakBirkalkulatu();
+				} else {
+					JOptionPane.showMessageDialog(null, "ez dira datuak sartu enplegatua sortzeko" );
+					Nagusia.LOGGER.severe("ez dira datuak sartu departamentua sortzeko");
+				}
 			}
 		});
 		add(btnGehitu);
 		btnAldatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (txtFIzena.getText().length() > 0 && txtFKokapena.getText().length() > 0) {
 				int aldatuDepartKod = (int) datuak[taula.getSelectedRow()][0];
 				String izenBerria = txtFIzena.getText();
 				String eraikuntzaBerria = txtFKokapena.getText();
 
 				Kontroladorea.aldatuDepartamentua(aldatuDepartKod, izenBerria, eraikuntzaBerria);
 				taularnBalioakBirkalkulatu();
-			}
+			} else {
+				JOptionPane.showMessageDialog(null, "ez dira datuak sartu enplegatua sortzeko" );
+				Nagusia.LOGGER.severe("ez dira datuak sartu departamentua sortzeko");
+			}}
 		});
 
 		btnAldatu.setBounds(536, 56, 89, 23);
