@@ -23,7 +23,7 @@ public class nireLogerra {
         }
 
         logger.setLevel(Level.INFO);
-        FileHandler fileTxt = new FileHandler("Logging.txt");
+        FileHandler fileTxt = new FileHandler("Logging.txt",true);
 
 
         // textura formateatu 
