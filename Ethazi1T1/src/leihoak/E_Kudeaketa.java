@@ -17,9 +17,7 @@ public class E_Kudeaketa extends JPanel {
 	private TableColumnModel columnModel;
 
 	private DefaultTableModel modelo = new DefaultTableModel() {
-		public boolean isCellEditable(int row, int column) {
-			return false;
-		}
+
 	};
 	private JScrollPane scrollPane;
 	private JButton btnGehitu = new JButton("Gehitu");
@@ -97,10 +95,14 @@ public class E_Kudeaketa extends JPanel {
 	}
 
 	private void taularenBaliokKalkulatu() {
-	 datuak = Kontroladorea.lortuEnplegatuenDatuak();
+		datuak = Kontroladorea.lortuEnplegatuenDatuak();
 		String[] taulaBurua = new String[] { "ID", "Izen Abizena", "Departamentua", "Soldata", "Ardura", "AltaData",
 				"ZuzendariKodea", "Maila" };
-		modelo = new DefaultTableModel(datuak, taulaBurua);
+		modelo = new DefaultTableModel(datuak, taulaBurua) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		taula.setModel(modelo);
 		columnModel = taula.getColumnModel();
 		columnModel.getColumn(0).setPreferredWidth(25);

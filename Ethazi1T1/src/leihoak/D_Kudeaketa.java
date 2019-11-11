@@ -20,11 +20,7 @@ public class D_Kudeaketa extends JPanel {
 
 	private JTable taula = new JTable();
 	private JScrollPane scrollPane;
-	private DefaultTableModel modelo = new DefaultTableModel() {
-		public boolean isCellEditable(int row, int column) {
-			return false;
-		}
-	};
+	private DefaultTableModel modelo = new DefaultTableModel();
 	private Object[][] datuak;
 	private JTextField txtFIzena = new JTextField();
 	private JTextField txtFKokapena = new JTextField();
@@ -113,8 +109,8 @@ public class D_Kudeaketa extends JPanel {
 				int aldatuDepartKod = (int) datuak[taula.getSelectedRow()][0];
 				String izenBerria = txtFIzena.getText();
 				String eraikuntzaBerria = txtFKokapena.getText();
-				
-				Kontroladorea.aldatuDepartamentua(aldatuDepartKod,izenBerria,eraikuntzaBerria);
+
+				Kontroladorea.aldatuDepartamentua(aldatuDepartKod, izenBerria, eraikuntzaBerria);
 				taularnBalioakBirkalkulatu();
 			}
 		});
@@ -145,7 +141,11 @@ public class D_Kudeaketa extends JPanel {
 	private void taularnBalioakBirkalkulatu() {
 		datuak = Kontroladorea.lortuDepartamentuenDatuak();
 		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
-		modelo = new DefaultTableModel(datuak, taulaBurua);
+		modelo = new DefaultTableModel(datuak, taulaBurua) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		taula.setModel(modelo);
 	}
 
