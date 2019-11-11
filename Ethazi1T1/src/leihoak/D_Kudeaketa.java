@@ -105,7 +105,7 @@ public class D_Kudeaketa extends JPanel {
 					Kontroladorea.sartuDept(izena, kokapena);
 					taularnBalioakBirkalkulatu();
 				} else {
-					JOptionPane.showMessageDialog(null, "ez dira datuak sartu enplegatua sortzeko" );
+					JOptionPane.showMessageDialog(null, "ez dira datuak sartu departamentuak sortzeko" );
 					Nagusia.LOGGER.severe("ez dira datuak sartu departamentua sortzeko");
 				}
 			}
@@ -121,7 +121,7 @@ public class D_Kudeaketa extends JPanel {
 				Kontroladorea.aldatuDepartamentua(aldatuDepartKod, izenBerria, eraikuntzaBerria);
 				taularnBalioakBirkalkulatu();
 			} else {
-				JOptionPane.showMessageDialog(null, "ez dira datuak sartu enplegatua sortzeko" );
+				JOptionPane.showMessageDialog(null, "ez dira datuak sartu departamentuak sortzeko" );
 				Nagusia.LOGGER.severe("ez dira datuak sartu departamentua sortzeko");
 			}}
 		});

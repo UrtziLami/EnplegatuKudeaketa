@@ -109,8 +109,21 @@ public class E_Eremuak extends JPanel {
 				String zuz = (String) cmbxArdurak.getSelectedItem();
 				if (zuz.equals("Zuzendaria")) {
 					cmbxMailak.setEnabled(true);
-				}else
+					
+				}else if (zuz.equals("Mintegi-burua")) {
+					cmbxMailak.setSelectedItem("Mintegi-burua");
+					kalkulatuZuzendariak(zuz);
+				}
+				else if (zuz.equals("Idazkaria")) {
+					cmbxMailak.setSelectedItem("Idazkaria");
+					kalkulatuZuzendariak(zuz);
+				}
+				else  {
 					cmbxMailak.setEnabled(false);
+					zuz="Soila";
+					kalkulatuZuzendariak(zuz);
+				}
+				
 			}
 		});
 		add(cmbxArdurak);
@@ -126,10 +139,12 @@ public class E_Eremuak extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String nag = (String) cmbxMailak.getSelectedItem();
+				kalkulatuZuzendariak(nag);
 				if (nag.equals("Zuzendari Nagusia")) {
 					cmbxZuzKod.setEnabled(false);
-				}else
+				}else {
 					cmbxZuzKod.setEnabled(true);
+				}
 			}
 		});
 
@@ -176,16 +191,22 @@ public class E_Eremuak extends JPanel {
 
 		lblZuzendariKodea.setBounds(67, 302, 109, 14);
 		add(lblZuzendariKodea);
+		cmbxZuzKod.setEnabled(false);
 
 		cmbxZuzKod.setBounds(219, 299, 155, 20);
-		zuzKod = Kontroladorea.lortuZuzendariKod();
-		for (int i = 0; i < zuzKod.size(); i++) {
-			cmbxZuzKod.addItem(zuzKod.get(i));
-		}
+		
 		add(cmbxZuzKod);
 
 	}
-
+ private void kalkulatuZuzendariak(String maila) {
+	 zuzKod = Kontroladorea.lortuZuzendariKod(maila);
+		for (int i = 0; i < zuzKod.size(); i++) {
+			cmbxZuzKod.addItem(zuzKod.get(i));
+		}
+		if(zuzKod.size()>0) {
+			cmbxZuzKod.setEditable(true);
+		}
+ }
 	private void aldatuLeihoEnpKudeaketa() {
 		E_Kudeaketa enp = new E_Kudeaketa();
 		Leihoak.aldatuLeihoa(enp);
