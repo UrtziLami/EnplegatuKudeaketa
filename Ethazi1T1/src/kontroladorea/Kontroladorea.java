@@ -11,6 +11,7 @@ import eredua.FitxategiakIrakurri;
 import eredua.Inportak;
 import eredua.Selekzioak;
 import eredua.SortuPDF;
+import eredua.SortuTXT;
 
 public class Kontroladorea {
 
@@ -96,8 +97,20 @@ public class Kontroladorea {
 		return datuak;
 	}
 
-	public static void pdfSortu(String path) {
-		SortuPDF.createPDF(new File(path));
+	public static void pdfSortuEnp(String path) {
+		SortuPDF.sortuPDFEnp(new File(path));
+	}
+	
+	public static void pdfSortuDep(String path) {
+		SortuPDF.sortuPDFDep(new File(path));
+	}
+	
+	public static void txtSortuEnp(String path) {
+		SortuTXT.sortuTXTEnp(new File(path));
+	}
+	
+	public static void txtSortuDep(String path) {
+		SortuTXT.sortuTXTDep(new File(path));
 	}
 
 	public static ArrayList<Integer> lortuZuzendariKod(String maila) {

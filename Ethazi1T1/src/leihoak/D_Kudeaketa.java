@@ -28,11 +28,6 @@ public class D_Kudeaketa extends JPanel {
 	private JTextField txtFKokapena = new JTextField();
 
 	private String izena, kokapena;
-
-	private JButton btnLehena = new JButton("<<");
-	private JButton btnAtzera = new JButton("<");
-	private JButton btnHurrengoa = new JButton(">");
-	private JButton btnAzkena = new JButton(">>");
 	private JButton btnGehitu = new JButton("Gehitu");
 	private JButton btnAldatu = new JButton("Aldatu");
 	private JButton btnKendu = new JButton("Kendu");
@@ -53,25 +48,13 @@ public class D_Kudeaketa extends JPanel {
 		setLayout(null);
 		setBounds(150, 150, 650, 490);
 
-		btnLehena.setBounds(30, 359, 89, 23);
-		add(btnLehena);
-
-		btnAtzera.setBounds(195, 359, 89, 23);
-		add(btnAtzera);
-
-		btnHurrengoa.setBounds(369, 359, 89, 23);
-		add(btnHurrengoa);
-
-		btnAzkena.setBounds(536, 359, 89, 23);
-		add(btnAzkena);
-
 		// *************taularen datuak
 		taula.setBounds(30, 123, 446, 214);
 		add(taula);
 
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(30, 123, 595, 214);
+		scrollPane.setBounds(30, 123, 595, 258);
 		add(scrollPane);
 		taularnBalioakBirkalkulatu();
 		taula.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

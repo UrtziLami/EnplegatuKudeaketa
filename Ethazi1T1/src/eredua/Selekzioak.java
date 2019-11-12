@@ -71,4 +71,40 @@ public class Selekzioak {
 		return enpArray;
 	}
 	
+	public static String deptIzena(int depKod) {
+		Statement st = null;
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
+		String izena = "";
+
+		try {
+			st = konexioa.createStatement();
+			ResultSet rs = st.executeQuery("SELECT DepartIzena FROM `departamentu`  WHERE DepartamentuKod = " + depKod);
+			while (rs.next()) {
+				izena = (rs.getString("DepartIzena"));
+			}
+		} catch (Exception e) {
+			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
+			System.out.println(e.getMessage());
+		}
+		return izena;
+	}
+	
+	public static String zuzIzena(int zuzKod) {
+		Statement st = null;
+		Connection konexioa = Konexioa.getKonexioa("enpkude");
+		String izena = "";
+
+		try {
+			st = konexioa.createStatement();
+			ResultSet rs = st.executeQuery("SELECT IzenAbizena FROM `enplegatu`  WHERE EnplegatuKod = " + zuzKod);
+			while (rs.next()) {
+				izena = (rs.getString("IzenAbizena"));
+			}
+		} catch (Exception e) {
+			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
+			System.out.println(e.getMessage());
+		}
+		return izena;
+	}
+	
 }

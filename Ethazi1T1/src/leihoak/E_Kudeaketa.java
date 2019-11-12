@@ -23,10 +23,6 @@ public class E_Kudeaketa extends JPanel {
 	private JButton btnGehitu = new JButton("Gehitu");
 	private JButton btnKendu = new JButton("Kendu");
 	private JButton btnAldatu = new JButton("Aldatu");
-	private JButton btnLehenengoa = new JButton("<<");
-	private JButton btnAztera = new JButton("<");
-	private JButton btnHurrengoa = new JButton(">");
-	private JButton btnNewButton = new JButton(">>");
 	private JButton btnAtzera = new JButton("Atzera");
 	private Object[][] datuak;
 
@@ -38,7 +34,7 @@ public class E_Kudeaketa extends JPanel {
 
 		scrollPane = new JScrollPane(taula);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(23, 65, 605, 235);
+		scrollPane.setBounds(23, 65, 605, 306);
 		add(scrollPane);
 		taularenBaliokKalkulatu();
 		btnGehitu.addActionListener(new ActionListener() {
@@ -71,18 +67,6 @@ public class E_Kudeaketa extends JPanel {
 		});
 		btnAldatu.setBounds(500, 27, 89, 23);
 		add(btnAldatu);
-
-		btnLehenengoa.setBounds(52, 342, 89, 23);
-		add(btnLehenengoa);
-
-		btnHurrengoa.setBounds(355, 342, 89, 23);
-		add(btnHurrengoa);
-
-		btnAztera.setBounds(196, 342, 89, 23);
-		add(btnAztera);
-
-		btnNewButton.setBounds(514, 342, 89, 23);
-		add(btnNewButton);
 
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
