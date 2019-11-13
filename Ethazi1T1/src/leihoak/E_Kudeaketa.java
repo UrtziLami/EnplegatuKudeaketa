@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -45,6 +47,7 @@ public class E_Kudeaketa extends JPanel {
 		});
 		btnGehitu.setBounds(52, 27, 89, 23);
 		add(btnGehitu);
+	
 
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -58,10 +61,14 @@ public class E_Kudeaketa extends JPanel {
 
 		btnKendu.setBounds(281, 27, 89, 23);
 		add(btnKendu);
+		btnAldatu.setEnabled(false);
 
 		btnAldatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				E_Eremuak emp = new E_Eremuak();
+				int id = (int) datuak[taula.getSelectedRow()][0];
+				String izena = (String) datuak[taula.getSelectedRow()][1];
+				int soldata = (int) datuak[taula.getSelectedRow()][3];
+				E_Eremuak emp = new E_Eremuak(id,izena,soldata);
 				Leihoak.aldatuLeihoa(emp);
 			}
 		});
@@ -75,6 +82,11 @@ public class E_Kudeaketa extends JPanel {
 		});
 		btnAtzera.setBounds(281, 402, 89, 23);
 		add(btnAtzera);
+		taula.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	        	btnAldatu.setEnabled(true);
+	        }
+	    });
 
 	}
 

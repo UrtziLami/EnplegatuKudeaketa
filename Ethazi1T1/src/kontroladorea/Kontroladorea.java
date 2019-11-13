@@ -145,6 +145,18 @@ public class Kontroladorea {
 		enp.setMaila(maila.toUpperCase());
 		Inportak.erregistratuEnplegatuak(enp);
 	}
+	public static void aldatuEnp(int enplegatuKod ,int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura,
+			String maila) {
+		Enplegatu enp = new Enplegatu();
+		enp.setEnpKod(enplegatuKod);
+		enp.setDepartKod(departKod);
+		enp.setArdura(ardura.toUpperCase());
+		enp.setSoldata(soldata);
+		enp.setZuzendariKod(zuzendariKod);
+		enp.setIzenAbizena(izenAbizena.toUpperCase());
+		enp.setMaila(maila.toUpperCase());
+		Aldaketak.enplegatuAldatu(enp);
+	}
 
 	public static void sartuDept(String departIzena, String eraikuntza) {
 		Departamentu dept = new Departamentu();
