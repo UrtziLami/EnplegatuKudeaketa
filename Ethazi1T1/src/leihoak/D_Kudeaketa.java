@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import kontroladorea.Kontroladorea;
@@ -73,6 +75,13 @@ public class D_Kudeaketa extends JPanel {
 
 		lblKokapena.setBounds(52, 78, 67, 14);
 		add(lblKokapena);
+		taula.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	        	btnAldatu.setEnabled(true);
+	        	btnKendu.setEnabled(true);
+	        }
+	    });
+
 
 		txtFKokapena.setBounds(125, 75, 170, 20);
 		add(txtFKokapena);
@@ -94,6 +103,7 @@ public class D_Kudeaketa extends JPanel {
 			}
 		});
 		add(btnGehitu);
+		btnAldatu.setEnabled(false);
 		btnAldatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtFIzena.getText().length() > 0 && txtFKokapena.getText().length() > 0) {
@@ -111,6 +121,7 @@ public class D_Kudeaketa extends JPanel {
 
 		btnAldatu.setBounds(536, 56, 89, 23);
 		add(btnAldatu);
+		btnKendu.setEnabled(false);
 		btnKendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int ezabatuDepartKod = (int) datuak[taula.getSelectedRow()][0];
