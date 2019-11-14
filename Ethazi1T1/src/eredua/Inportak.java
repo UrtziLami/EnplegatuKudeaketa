@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import kontroladorea.Nagusia;
 
 public class Inportak {
@@ -33,6 +35,7 @@ public class Inportak {
 			System.out.println("Gehitu da enplegatua");
 			
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "EZ DA GEHITU ENPLEGATUA" );
 			Nagusia.LOGGER.severe("EZ DA GEHITU ENPLEGATUA");
 			System.out.println("Ez da gehitu enplegatua");
 		}
@@ -50,6 +53,7 @@ public class Inportak {
 			System.out.println("Gehitu da departamentua");
 			
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "EZ DA GEHITU DEPARTAMENTUA" );
 			Nagusia.LOGGER.severe("EZ DA GEHITU DEPARTAMENTUA");
 			System.out.println("Ez da gehitu departamentua");
 		}

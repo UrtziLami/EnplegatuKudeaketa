@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import kontroladorea.Nagusia;
 
 /**
@@ -65,6 +67,7 @@ public class Selekzioak {
 			}
 
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU ENPLEGATUAK" );
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU ENPLEGATUAK");
 			System.out.println(e.getMessage());
 		}
@@ -83,6 +86,7 @@ public class Selekzioak {
 				izena = (rs.getString("DepartIzena"));
 			}
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK" );
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
 			System.out.println(e.getMessage());
 		}
@@ -101,6 +105,7 @@ public class Selekzioak {
 				izena = (rs.getString("IzenAbizena"));
 			}
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK" );
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
 			System.out.println(e.getMessage());
 		}

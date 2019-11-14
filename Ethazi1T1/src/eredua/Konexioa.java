@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import kontroladorea.Nagusia;
 
 public class Konexioa {
@@ -25,6 +27,7 @@ public class Konexioa {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "ERROREA DIRVERRA ERREGISTRATZERAKOAN" );
 			Nagusia.LOGGER.severe("ERROREA DIRVERRA ERREGISTRATZERAKOAN");// mensaje error
 			System.exit(0); // parar la ejecución
 		}
@@ -32,6 +35,7 @@ public class Konexioa {
 		try {
 			kon = DriverManager.getConnection(this.serbitzaria, this.usuario, this.clave);
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "ERROREA SERBITZARIRA KONEKTATZERAKOAN" );
 			Nagusia.LOGGER.severe("ERROREA SERBITZARIRA KONEKTATZERAKOAN");
 			System.exit(0); // parar la ejecución
 		}

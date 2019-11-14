@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import kontroladorea.Nagusia;
 
 public class Ezabaketak {
@@ -17,6 +19,7 @@ public class Ezabaketak {
 			st.close();
 			System.out.println("Ezabatu da departamentua");
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "EZ DA EZABATU DEPARTAMENTUA" );
 			Nagusia.LOGGER.severe("EZ DA EZABATU DEPARTAMENTUA");
 			System.out.println("Ez da ezabatu departamentua");
 		}
@@ -32,6 +35,7 @@ public class Ezabaketak {
 			System.out.println("Ezabatu da enplegatua");
 		
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "EZ DA EZABATU ENPLEGATUA" );
 			Nagusia.LOGGER.severe("EZ DA EZABATU ENPLEGATUA");
 			System.out.println("Ez da ezabatu enplegatua");
 		}

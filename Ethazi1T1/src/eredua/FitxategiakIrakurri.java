@@ -70,12 +70,15 @@ public class FitxategiakIrakurri {
 			employeeList.forEach(obje -> stringakArrayListeanSartu((JSONObject) obje, objetuak));
 
 		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "JSON FITXATEGIA EZ DA AURKITU" );
 			Nagusia.LOGGER.severe("JSON FITXATEGIA EZ DA AURKITU");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "JSON FITXATEGIA TXARTO DAGO" );
 			Nagusia.LOGGER.severe("JSON FITXATEGIA TXARTO DAGO");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ParseException e) {
+			JOptionPane.showMessageDialog(null, "JSON FITXATEGI EZ BATERAGARRIA" );
 			Nagusia.LOGGER.severe("JSON FITXATEGI EZ BATERAGARRIA");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
@@ -94,9 +97,11 @@ public class FitxategiakIrakurri {
 			// Badaukagu kargatuta liburuak eta orain inprimatuko ditugu
 
 		} catch (SAXException e) {
+			JOptionPane.showMessageDialog(null, "SAX EXZEPZIOA" );
 			Nagusia.LOGGER.severe("SAX EXZEPZIOA");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "XML FITXATEGIA TXARTO DAGO" );
 			Nagusia.LOGGER.severe("XML FITXATEGIA TXARTO DAGO");
 			e.printStackTrace();
 		}
@@ -131,6 +136,7 @@ public class FitxategiakIrakurri {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "XML FITXATEGIA TXARTO DAGO" );
 			Nagusia.LOGGER.severe("XML FITXATEGIA TXARTO DAGO");
 			e.printStackTrace();
 		}

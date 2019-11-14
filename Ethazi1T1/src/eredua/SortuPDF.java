@@ -9,6 +9,8 @@ import kontroladorea.Nagusia;
 import java.io.*;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  * Ejemplo de uso de la librería iText para trabajar con documentos PDF en Java,
  * nos permite crear, analizar, modificar y mantener documentos en este formato.
@@ -115,6 +117,7 @@ public class SortuPDF {
 			document.close();
 			System.out.println("Se ha generado tu hoja PDF!");
 		} catch (DocumentException documentException) {
+			JOptionPane.showMessageDialog(null, "EZ DA AURKITU PDF FITXATEGIA" );
 			Nagusia.LOGGER.severe("EZ DA AURKITU PDF FITXATEGIA");
 			System.out.println(
 					"The file not exists (Se ha producido un error al generar un documento): " + documentException);
@@ -128,6 +131,7 @@ public class SortuPDF {
 			try {
 				PdfWriter.getInstance(document, new FileOutputStream(fitxDep));
 			} catch (FileNotFoundException fileNotFoundException) {
+				JOptionPane.showMessageDialog(null, "EZ DA AURKITU PDF-A, FITXATEGIA SORTZEKO" );
 				Nagusia.LOGGER.severe("EZ DA AURKITU PDF-A, FITXATEGIA SORTZEKO");
 				System.out.println("No se encontró el fichero para generar el pdf" + fileNotFoundException);
 			}
@@ -176,6 +180,7 @@ public class SortuPDF {
 			document.close();
 			System.out.println("Se ha generado tu hoja PDF!");
 		} catch (DocumentException documentException) {
+			JOptionPane.showMessageDialog(null, "EZ DA AURKITU PDF FITXATEGIA" );
 			Nagusia.LOGGER.severe("EZ DA AURKITU PDF FITXATEGIA");
 			System.out.println(
 					"The file not exists (Se ha producido un error al generar un documento): " + documentException);
