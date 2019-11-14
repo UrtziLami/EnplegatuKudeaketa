@@ -35,10 +35,10 @@ public class E_Eremuak extends JPanel {
 	private JComboBox<String> cmbxDepartamentuak = new JComboBox<String>();
 	private JComboBox<String> cmbxArdurak = new JComboBox<String>();
 	private JComboBox<String> cmbxMailak = new JComboBox<String>();
-	private JComboBox<Integer> cmbxZuzKod = new JComboBox<Integer>();
+	private JComboBox<String> cmbxZuzKod = new JComboBox<String>();
 
 	private ArrayList<Departamentu> deptak = new ArrayList<Departamentu>();
-	private ArrayList<Integer> zuzKod = new ArrayList<Integer>();
+	private Object[][] zuzKod;
 
 	private String izenAbizena, ardura, maila;
 	private int soldata, zuzendariKod, depart;
@@ -113,9 +113,11 @@ public class E_Eremuak extends JPanel {
 
 				} else if (zuz.equals("Mintegi-burua")) {
 					cmbxMailak.setSelectedItem("Mintegi-burua");
+					cmbxMailak.setEnabled(false);
 					kalkulatuZuzendariak(zuz);
 				} else if (zuz.equals("Idazkaria")) {
 					cmbxMailak.setSelectedItem("Idazkaria");
+					cmbxMailak.setEnabled(false);
 					kalkulatuZuzendariak(zuz);
 				} else {
 					cmbxMailak.setEnabled(false);
@@ -173,7 +175,8 @@ public class E_Eremuak extends JPanel {
 					} else
 						maila = "SOILA";
 					if (cmbxZuzKod.isEnabled()) {
-						zuzendariKod = (int) cmbxZuzKod.getSelectedItem();
+						zuzendariKod = (int) cmbxZuzKod.getSelectedIndex();
+						zuzendariKod=(int) zuzKod[zuzendariKod][0];
 					} else {
 						zuzendariKod = 0;
 					}
@@ -254,9 +257,11 @@ public class E_Eremuak extends JPanel {
 
 				} else if (zuz.equals("Mintegi-burua")) {
 					cmbxMailak.setSelectedItem("Mintegi-burua");
+					cmbxMailak.setEnabled(false);
 					kalkulatuZuzendariak(zuz);
 				} else if (zuz.equals("Idazkaria")) {
 					cmbxMailak.setSelectedItem("Idazkaria");
+					cmbxMailak.setEnabled(false);
 					kalkulatuZuzendariak(zuz);
 				} else {
 					cmbxMailak.setEnabled(false);
@@ -314,7 +319,8 @@ public class E_Eremuak extends JPanel {
 					} else
 						maila = "SOILA";
 					if (cmbxZuzKod.isEnabled()) {
-						zuzendariKod = (int) cmbxZuzKod.getSelectedItem();
+						zuzendariKod = (int) cmbxZuzKod.getSelectedIndex();
+						zuzendariKod=(int) zuzKod[zuzendariKod][0];
 					} else {
 						zuzendariKod = 0;
 					}
@@ -341,10 +347,11 @@ public class E_Eremuak extends JPanel {
 	private void kalkulatuZuzendariak(String maila) {
 		zuzKod = Kontroladorea.lortuZuzendariKod(maila);
 		cmbxZuzKod.removeAllItems();
-		for (int i = 0; i < zuzKod.size(); i++) {
-			cmbxZuzKod.addItem(zuzKod.get(i));
+		if (zuzKod.length > 0) {
+		for (int i = 0; i < zuzKod.length; i++) {
+			cmbxZuzKod.addItem((String)zuzKod[i][1]);
 		}
-		if (zuzKod.size() > 0) {
+		
 			cmbxZuzKod.setEnabled(true);
 		}
 	}

@@ -113,7 +113,8 @@ public class Kontroladorea {
 		SortuTXT.sortuTXTDep(new File(path));
 	}
 
-	public static ArrayList<Integer> lortuZuzendariKod(String maila) {
+	public static Object[][] lortuZuzendariKod(String maila) {
+		Object[][] objetuenLista;
 		ArrayList<Integer> kodeak = new ArrayList<Integer>();
 		ArrayList<Enplegatu> enpak = new ArrayList<Enplegatu>();
 		enpak = lortuEnplegatuak();
@@ -131,11 +132,17 @@ public class Kontroladorea {
 				kodeak.add(enpak.get(i).getEnpKod());
 			}
 		}
-		return kodeak;
+		objetuenLista= new Object[kodeak.size()][2]; 
+		System.out.println(kodeak.size());
+		for (int i = 0; i < kodeak.size(); i++) {
+			objetuenLista[i][0]=kodeak.get(i);
+			objetuenLista[i][1]= Selekzioak.zuzIzena( kodeak.get(i));
+		}
+		
+		return objetuenLista;
 	}
 
-	public static void sartuEnp(int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura,
-			String maila) {
+	public static void sartuEnp(int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura, String maila) {
 		Enplegatu enp = new Enplegatu();
 		enp.setDepartKod(departKod);
 		enp.setArdura(ardura.toUpperCase());
@@ -145,8 +152,8 @@ public class Kontroladorea {
 		enp.setMaila(maila.toUpperCase());
 		Inportak.erregistratuEnplegatuak(enp);
 	}
-	public static void aldatuEnp(int enplegatuKod ,int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura,
-			String maila) {
+	
+	public static void aldatuEnp(int enplegatuKod ,int departKod, int soldata, int zuzendariKod, String izenAbizena, String ardura, String maila) {
 		Enplegatu enp = new Enplegatu();
 		enp.setEnpKod(enplegatuKod);
 		enp.setDepartKod(departKod);
