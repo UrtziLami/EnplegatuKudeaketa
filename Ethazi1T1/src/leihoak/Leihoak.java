@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import kontroladorea.Kontroladorea;
+
 public class Leihoak extends JFrame {
 
 	public static JFrame frame;
@@ -24,7 +26,9 @@ public class Leihoak extends JFrame {
 		frame.setTitle("Enplegatuen eta Departamentuen Kudeaketa");
 		
 	}
-	
+	public static void lehioaItzi() {
+		Kontroladorea.itziKonexioa();
+	}
 	public static void aldatuLeihoa(JPanel panela) {
 		frame.setContentPane(panela);
 		frame.setPreferredSize(panela.getSize());

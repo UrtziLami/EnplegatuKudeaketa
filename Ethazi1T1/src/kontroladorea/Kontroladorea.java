@@ -9,6 +9,7 @@ import eredua.Enplegatu;
 import eredua.Ezabaketak;
 import eredua.FitxategiakIrakurri;
 import eredua.Inportak;
+import eredua.Konexioa;
 import eredua.Selekzioak;
 import eredua.SortuPDF;
 import eredua.SortuTXT;
@@ -95,6 +96,9 @@ public class Kontroladorea {
 			cont++;
 		}
 		return datuak;
+	}
+	public static void itziKonexioa() {
+		Konexioa.konexioaItzi();
 	}
 
 	public static void pdfSortuEnp(String path) {

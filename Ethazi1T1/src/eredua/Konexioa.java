@@ -50,9 +50,19 @@ public class Konexioa {
 			System.out.println(
 					"ezin izan da " + datuBasea + " objetua sortu lehendik existitzen delako ");
 		}
-
 		return kon;
+	}
+	public static void  konexioaItzi() {
+		try {
+			kon.close();
+			kon=null;
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "ERROREA SERBITZARIRA DESKONEKTATZERAKOAN" );
+			Nagusia.LOGGER.severe("ERROREA SERBITZARIRA DESKONEKTATZERAKOAN");
 
+		}
+		
+		
 	}
 
 }
