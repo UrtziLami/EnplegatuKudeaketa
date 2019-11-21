@@ -31,7 +31,7 @@ public class Selekzioak {
 			while (rs.next()) {
 				deptKod = (rs.getInt("DepartamentuKod"));
 				izena = (rs.getString("DepartIzena"));
-				eraikuntza = (rs.getString("Eraikuntza"));
+				eraikuntza = (rs.getString("Kokapena"));
 				Departamentu dept = new Departamentu(deptKod, izena, eraikuntza);
 				deptArray.add(dept);
 			}
@@ -62,18 +62,18 @@ public class Selekzioak {
 				altaData = (rs.getString("AltaData"));
 				zuzendariKod = (rs.getInt("ZuzendariKod"));
 				maila = (rs.getString("Maila"));
-				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod,izena, ardura, maila, altaData );
+				Enplegatu enp = new Enplegatu(enpKod, deptKod, soldata, zuzendariKod, izena, ardura, maila, altaData);
 				enpArray.add(enp);
 			}
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU ENPLEGATUAK" );
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU ENPLEGATUAK");
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU ENPLEGATUAK");
 			System.out.println(e.getMessage());
 		}
 		return enpArray;
 	}
-	
+
 	public static String deptIzena(int depKod) {
 		Statement st = null;
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
@@ -86,13 +86,13 @@ public class Selekzioak {
 				izena = (rs.getString("DepartIzena"));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK" );
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK");
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
 			System.out.println(e.getMessage());
 		}
 		return izena;
 	}
-	
+
 	public static String zuzIzena(int zuzKod) {
 		Statement st = null;
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
@@ -105,11 +105,11 @@ public class Selekzioak {
 				izena = (rs.getString("IzenAbizena"));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK" );
+			JOptionPane.showMessageDialog(null, "EZ DIRA AURKITU DEPARTAMENTUAK");
 			Nagusia.LOGGER.severe("EZ DIRA AURKITU DEPARTAMENTUAK");
 			System.out.println(e.getMessage());
 		}
 		return izena;
 	}
-	
+
 }

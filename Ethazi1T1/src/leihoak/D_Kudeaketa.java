@@ -145,7 +145,7 @@ public class D_Kudeaketa extends JPanel {
 
 	private void taularnBalioakBirkalkulatu() {
 		datuak = Kontroladorea.lortuDepartamentuenDatuak();
-		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Eraikina" };
+		String[] taulaBurua = new String[] { "ID", "DepartamentuIzena", "Kokapena" };
 		modelo = new DefaultTableModel(datuak, taulaBurua) {
 			public boolean isCellEditable(int row, int column) {
 				return false;

@@ -45,7 +45,7 @@ public class Inportak {
 		Connection konexioa = Konexioa.getKonexioa("enpkude");
 		try {
 			PreparedStatement st = konexioa.prepareStatement(
-					"INSERT INTO `departamentu`( `DepartIzena`, `Eraikuntza`) VALUES (?,?)");
+					"INSERT INTO `departamentu`( `DepartIzena`, `Kokapena`) VALUES (?,?)");
 			st.setString(1, dept.getDepartIzena());
 			st.setString(2, dept.getEraikuntza());
 			st.executeUpdate();
